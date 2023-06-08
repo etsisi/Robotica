@@ -1,145 +1,115 @@
-<!--
-marp        : true
-auto-scaling:
-    - true
-    - fittingHeader
-    - math
-    - code
-paginate        : true
-theme           : hegel
-title           : Robótica
-author          : Raúl Lara Cabrera
-description     : Presentación de la asignatura Robótica
--->
-<!-- _class: titlepage -->
-![bg left:33%](https://images.unsplash.com/photo-1562758778-e5638b5b6607?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=627&q=80)
+# Robótica
 
-<div class="title">Robótica</div>
-<div class="subtitle">Grado en Ingeniería de Computadores</div>
-<div class="author">Alberto Díaz, Raúl Lara</div>
-<div class="date">Curso 2022/2023</div>
-<div class="organization">Departamento de Sistemas Informáticos</div>
+Bienvenido al repositorio de la asignatura de Robótica para el Grado en
+Ingeniería de Computadores.
 
-[![height:30](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-informational.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+En este repositorio se encuentran los recursos de la asignatura que se
+utilizarán durante el curso académico.
 
----
+## Resumen de la asignatura
 
-# La asignatura
+<table>
+  <tr><th>Asignatura</th><td>Robótica</td></tr>
+  <tr><th>Curso académico</th><td>2022-2023</td></tr>
+  <tr><th>Centro>/th><td>E.T.S.I. de Sistemas Informáticos</td></tr>
+  <tr><th>Titulación</th><td>61CI - Grado en Ingenieria de Computadores</td></tr>
+  <tr><th>Código</th><td>615000334</td></tr>
+  <tr><th>Créditos</th><td>6 ECTS</td></tr>
+  <tr><th>Carácter</th><td>Obligatoria</td></tr>
+  <tr><th>Semestre</th><td>Séptimo</td></tr>
+  <tr><th>Periodo de impartición</th><td>Septiembre a enero</td></tr>
+  <tr><th>Idioma de impartición</th><td>Castellano</td></tr>
+</table>
 
-**Robótica** es una asignatura con enfoque muy práctico donde se introducen los fundamentos del campo de la robótica, centrándose en la construcción y programación de robots móviles autónomos.
+**Robótica** es una asignatura con enfoque muy práctico donde se introducen los
+fundamentos del campo de la robótica, centrándose en la construcción y
+programación de robots móviles autónomos.
 
-Todo el material del curso estará relacionado directamente con los experimentos realizados en las prácticas; los estudiantes trabajarán en grupos construyendo y probando técnicas de sistemas robóticos cada vez más complejas para, con un poco de suerte, finalizar la asignatura con una competición de robots.
+Todo el material del curso estará relacionado directamente con los experimentos
+realizados en las prácticas; los estudiantes trabajarán en grupos construyendo y
+probando técnicas de sistemas robóticos cada vez más complejas para, con un poco
+de suerte, finalizar la asignatura con una competición de robots.
 
----
+### Sobre el concepto de robot y del estado actual del campo
 
-# Concepto de Robot y estado actual del campo
+El término **robot** fue utilizado por primera vez por un dramaturgo checo
+alrededor de 1920, pero la fascinación de la humanidad por los constructos
+capaces de percibir el entorno y actuar sobre él ha existido desde siempre.
 
-El término **robot** fue utilizado por primera vez por un dramaturgo checo alrededor de 1920, pero la fascinación de la humanidad por los constructos capaces de percibir el entorno y actuar sobre él ha existido desde siempre.
+A día de hoy, disponemos de hardware potente muy asequible, lo que nos permite a
+prácticamente todos construir (casi) cualquier tipo de robot para múltiples
+aplicaciones: robots industriales, aspiradoras, drones de reparto, coches
+autónomos y un largo etcétera. Aunque se trata de un campo de investigación
+activo, los bloques fundamentales como el modelado, el control o la percepción,
+están muy bien asentados.
 
-A día de hoy, disponemos de hardware potente muy asequible, lo que nos permite a prácticamente todos construir (casi) cualquier tipo de robot para múltiples aplicaciones: robots industriales, aspiradoras, drones de reparto, coches autónomos y un largo etcétera. Aunque se trata de un campo de investigación activo, los bloques fundamentales como el modelado, el control o la percepción, están muy bien asentados.
+## Contenido
 
----
+1. Introducción a la robótica
+   1. Definición de robot
+   2. Historia de la robótica
+   3. Aplicaciones de la robótica
+   4. Tipos de robots
+2. Percepción y actuación sobre el entorno
+   1. Sensores para la navegación
+   2. Visión artificial
+3. Control, planificación y optimización
+   1. Control clásico y control borroso
+   2. Arquitecturas de control
+   3. Optimización de controladores mediante computación evolutiva
+   4. Políticas de decisión y aprendizaje por refuerzo
+4. Robótica software
+   1. Arquitecturas de software
+   2. Programación de _softbots_
+   3. _Robotic Process Automation_ (RPA)
 
-# Profesorado
+Aunque cuenta con contenido teórico, la asignatura está orientada a la práctica,
+y se utilizará tanto el _framework_ de desarrollo ROS2 como el entorno de
+simulación Webots para la realización de las prácticas. El lenguaje de
+programación utilizado para ambos será Python 3, y el sistema operativo Ubuntu
+GNU/Linux 22.04.
 
-**Alberto Díaz**
-Despacho 4122
-alberto.diaz@upm.es
+## Evaluación de la asignatura
 
-**Raúl Lara**
-Despacho 1230
-raul.lara@upm.es
+La evaluación es eminentemente práctica, por lo que se recomienda a los
+estudiantes que asistan a las clases y realicen las prácticas en grupo, ya que
+éstas tienen un gran peso en la nota final.
 
-Horarios y reserva de tutorías en el Moodle de la asignatura.
+### Evaluación ordinaria
 
----
+**Parte teórica**, consistente en 4 cuestionarios telemáticos (uno por cada
+tema) con un peso del 5% de la nota cada uno (**20%** en total).
 
-# Contenido
+**Prácticas presenciales** en grupo:
 
-1. Introducción
-2. Percepción del entorno
-  2.1. Sensores para la navegación
-  2.2. Visión artificial
-  2.3. Detección de obstáculos
-3. Actuación sobre el entorno
-4. Control y optimización
-  4.1. Control borroso
-  4.2. Computación evolutiva para optimización de controladores
-5. Toma de decisiones
-  5.1. Robot Operating System (ROS)
-  5.2. Planificación de trayectorias y navegación
-6. Aplicaciones
+* Práctica 1. Práctica de robótica hardware (40%)
+* Práctica 2. Práctica de robótica software (40%)
 
----
+### Evaluación extraordinaria
 
-# Evaluación de la asignatura
+Un **examen teórico** (**20%** de peso sobre la nota final) de tipo test
+consistente en cuestiones relacionadas con los temas de la asignatura.
 
-Cuestionarios telemáticos:
+La entrega de las **prácticas** realizadas durante el curso (**80%** de peso
+sobre la nota final), donde existe la posibilidad de que el estudiante sea
+convocado para la exposición de la misma.
 
-* Uno por cada tema (6 en total)
-* Peso del 5% cada uno (30% del total)
+## Licencia
 
-Prácticas **presenciales** en grupo:
+El contenido y los materiales de este repositorio, excepto el código, están
+licenciados bajo la licencia
+[Creative Commons - Atribución-NoComercial-CompartirIgual 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/),
+lo que permite su uso no comercial, adaptación y compartición siempre y cuando
+se atribuya correctamente y se mantenga la misma licencia.
 
-* Práctica 1. Percepción del entorno (10%)
-* Práctica 2. Actuación sobre el entorno (10%)
-* Práctica 3. Control y optimización (10%)
-* Práctica 4. Toma de decisiones (40%)
+El código de este repositorio, salvo que se especifique lo contrario en los
+propios archivos, está licenciado bajo la
+[Licencia Pública General de GNU versión 3.0](https://www.gnu.org/licenses/gpl-3.0.html),
+lo cual le otorga la libertad de usar, modificar y distribuir el código, incluso
+con fines comerciales, siempre y cuando las modificaciones o trabajos derivados
+estén licenciados bajo la GPLv3.
 
----
-
-# Evaluación extraordinaria
-
-Un **examen teórico** (30% de peso sobre la nota final) de tipo test consistente en cuestiones relacionadas con los temas de la asignatura.
-
-La entrega de la **práctica** realizada durante el curso (70% de peso sobre la nota final), donde existe la posibilidad de que el estudiante sea convocado para la exposición de la misma.
-
-El aprobado de ambas partes es **obligatorio** para obtener el aprobado en la asignatura.
-
----
-
-# Instalación y uso de la imagen de docker
-
->**Warning!**
-Usar en caso de no tener/querer instalar la extension *Dev Containers* de VSCode. Esto ha sido probado en una distribución de linux, en concreto una basada en Arch, si quieres ayuda mas personalizada, pregunta a tu profesor de confianza.
-
-### Instalación de Docker
-
-Usando tu gestor de paquetes, ejecuta el siguiente comando:
-
-`$ pacman -S docker`
-
-En este caso el gestor de paquetes es `pacman` pero si estas usando una distro derivada de Ubuntu, posiblemente tu gestor sea `apt` (Linux es un mundo, buscate la vida, e instala docker)
-
-### Iniciando el servicio de Docker
-
-Una vez instalado **Docker** debes iniciar el servicio, para ello deberás ejecutar el siguiente comando:
-
-`$ sudo systemctl start docker.service`
-
-Esto iniciara el servicio **Docker** pero sin embargo, cuando reinicies la máquina, deberás volver a iniciarlo. Si no quieres tener que iniciar **Docker** cada vez que enciendes tu máquina, puedes ejecutar:
-
-`$ sudo systemctl enable docker`.
-
-### Usando la imagen de Humble Hawksbill con ros2
-
-Primero deberias clonar este repositorio en tu ordenador con el comando:
-
-`$ git clone git@github.com:laracabrera/robotica.git`
-
-Lo más problable si hace tiempo que no usas git, es que te salte un error y debas configurar el uso de *SSH Keys* para tu cuenta de GitHub, para ello, sigue esta [guía](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
-
-~~Tambien puedes descargar el repo en formate ZIP, pero se supone que eres ingenier@~~
-
-Para descargar y usar la imagen de **ros2** en **humble hawksbill**, deberás ejecutar el siguiente comandazo:
-
-`$ sudo docker run --rm -it -v /<>/:/opt/robotica osrf/ros:humble-desktop-full bash`
-
-Sustituye `/<>/` por el path completo a la carpeta **ros2** de este repositorio. 
-
-Este comando hace lo siguiente:
-
-- `--rm`: es lo que nos permite borrar el contenedor de docker una vez lo *matemos*, es decir, no borra la imagen, si no que borra el contenedor. Si no añadimos esta flag, una vez *matemos* al contenedor, este seguirá ocupando espacio.
-- `-it`: simplemente es una abreviación de *interactive* y lo que hace es, una vez descargada la imagen, te mete en ella.
-- `-v`: especificamos primero una ruta local en nuestra máquina la cual *uniremos* a una ruta del contenedor, de manera que el código que tengamos en nuestra ruta local, estará sincronizado con el contenedor.
-- `bash`: poniendo bash al final, estamos diciendo que nos meta en una bash dentro del contenedor, de esta manera, ya podriamos empezar a ejecutar comandos desde el contenedor.
+No está de más revisar y comprender los términos y condiciones específicos de
+cada licencia antes de utilizar o redistribuir cualquier contenido o código de
+este repositorio. Para más claridad, consulta los archivos de licencia incluidos
+o contacta directamente con alguno de los propietarios del repositorio.
