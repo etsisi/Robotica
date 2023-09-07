@@ -94,6 +94,28 @@ La entrega de las **prácticas** realizadas durante el curso (**80%** de peso
 sobre la nota final), donde existe la posibilidad de que el estudiante sea
 convocado para la exposición de la misma.
 
+## Código de conducta de la asignatura [1]
+
+Se requiere que estudiantes y docentes acepten el siguiente código de conducta. La coordinación de la asignatura hará cumplir este código a lo largo del curso. Esperamos la colaboración de todos los participantes para ayudar a asegurar un ambiente seguro.
+
+### La versión rápida
+
+Esta asignatura pretende ofrecer una experiencia libre de abusos para todas las personas, independientemente de su género, orientación sexual, discapacidad, apariencia física, talla, raza o religión. No toleramos abusos en ninguna de sus formas. El lenguaje e imágenes abusivos no son apropiados para ningún ámbito de la asignatura, incluidas diapositivas, trabajos entregados, comentarios en Moodle, X/Twitter y otros medios online. **Las personas que violen estas reglas pueden ser sancionadas o expulsadas de las clases o exámenes**.
+
+### La versión no tan rápida
+
+Los abusos incluyen: comentarios ofensivos relativos a género, orientación sexual, discapacidad, apariencia física, talla, raza, religión, imágenes sexuales en espacios públicos, intimidación deliberada, acoso, persecución, fotografía o grabación de abusos, interrupciones continuadas de clases u otros eventos, contacto físico inapropiado y atención sexual no deseada.
+
+Se espera que las personas instadas a parar cualquier comportamiento abusivo obedezcan inmediatamente.
+
+Si una persona incurre en un comportamiento abusivo, la coordinación de la asignatura puede tomar cualquier acción que estime oportuna, **incluyendo advertencias o expulsión de asistencia a clases**.
+
+Si estás sufriendo algún abuso, adviertes abusos sobre otra persona, o tienes alguna otra preocupación, por favor contacta con la coordinación de la asignatura inmediatamente.
+
+La coordinación estará encantada de ayudar a contactar con la seguridad de la universidad o con las autoridades locales, proveer escolta o asistir de cualquier otra manera a las personas que estén sufriendo abusos para que se sientan seguras mientras dure la asignatura. Valoramos tu apoyo en este aspecto.
+
+Esperamos que todos los participantes sigan estas reglas en todas las clases, talleres, tutorías, exámenes y eventos relacionados con la asignatura.
+
 ## Licencia
 
 El contenido y los materiales de este repositorio, excepto el código, están
@@ -113,3 +135,7 @@ No está de más revisar y comprender los términos y condiciones específicos d
 cada licencia antes de utilizar o redistribuir cualquier contenido o código de
 este repositorio. Para más claridad, consulta los archivos de licencia incluidos
 o contacta directamente con alguno de los propietarios del repositorio.
+
+---
+
+> [1] Sección derivada de [confcodeofconduct.com](https://es.confcodeofconduct.com/). Ayuda traduciendo o mejorando: en [github.com](https://github.com/confcodeofconduct/confcodeofconduct.com). Trabajo licenciado bajo [Creative Commons Attribution 3.0 Unported License](https://creativecommons.org/licenses/by/3.0/deed.es_ES).
