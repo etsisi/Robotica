@@ -52,6 +52,11 @@ section p {
   line-height: 1.3em;
   font-size: 100%;
 }
+section sup {
+  font-size: 0.4rem;
+  display: inline-block;
+  vertical-align:super;
+}
 
 section li {
   margin-top: 0.5em;
@@ -161,7 +166,11 @@ section blockquote strong {
 }
 
 section blockquote p {
-  font-size: 0.7em;
+  font-size: 0.6em;
+}
+
+section blockquote sup {
+  vertical-align: sub;
 }
 
 .columns {
