@@ -22,10 +22,17 @@ jobs:
       - name: Copy slides images 🖼️
         run: mkdir -p build/Slides && cp -R Slides/images build/Slides
 
-      - name: Build MARP slides PDFs 🛝
+      - name: Build MARP PDF slides 🛝
         uses: docker://marpteam/marp-cli:v1.7.0
         with:
           args: -I Slides/ -o build/Slides/ --pdf --html --allow-local-files --theme-set Slides/styles/
+        env:
+          MARP_USER: root:root
+
+      - name: Build MARP HTML slides 🛝
+        uses: docker://marpteam/marp-cli:v1.7.0
+        with:
+          args: -I Slides/ -o build/Slides/ --html --allow-local-files --theme-set Slides/styles/
         env:
           MARP_USER: root:root
 
