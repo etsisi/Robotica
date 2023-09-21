@@ -189,6 +189,11 @@ section blockquote sup {
   align-items: center;
 }
 
+.columns-third {
+  display: grid;
+  grid-template-columns: 75fr 25fr;
+  gap: 1rem;
+}
 /* Estilos para la transparencia de título::after
 
   <!-- _class: titlepage -->
