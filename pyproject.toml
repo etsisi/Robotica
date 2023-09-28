@@ -6,13 +6,12 @@ authors = ["blazaid <alberto.da@gmail.com>", "Raul Lara <lara.cabrera@gmail.com>
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = ">=3.9,<3.12"
 jupyter = "^1.0.0"
 numpy = "^1.23.4"
 sklearn = "^0.0"
-scikit-fuzzy = "^0.4.2"
 matplotlib = "^3.6.1"
-gym = "^0.26.2"
+tensorflow = "^2.14.0"
 
 
 [tool.poetry.group.dev.dependencies]
