@@ -13,6 +13,7 @@ sklearn = "^0.0"
 matplotlib = "^3.6.1"
 tensorflow = "^2.14.0"
 pandas = "^2.1.1"
+scikit-fuzzy = "^0.4.2"
 
 
 [build-system]
