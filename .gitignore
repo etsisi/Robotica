@@ -161,3 +161,8 @@ cython_debug/
 
 # PyCharm
 .idea/
+
+# Modelos de keras, tensorflow y tflite
+Notebooks/*.keras
+Notebooks/*.tflite
+Notebooks/*.h5
