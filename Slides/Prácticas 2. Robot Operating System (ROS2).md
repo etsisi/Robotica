@@ -1463,4 +1463,12 @@ def generate_launch_description():
 
 ---
 
+# Integrando ROS2 y Webots
+
+---
+
+Simuladores más usados en ROS:
+
+Webots | Gazebo | V-REP | Stage | MORSE | ARGoS | Microsoft AirSim | Carla
+
 # ¡GRACIAS!<!--_class: transition-->
