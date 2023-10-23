@@ -1,44 +1,38 @@
 ---
 marp : true
-auto-scaling:
-   - true
-   - fittingHeader
-   - math
-   - code
-paginate : true
-theme : hegel
-title : Robótica
+title : Robot Operating System (ROS)
 author :
-   - Alberto Díaz Álvarez <alberto.diaz@upm.es>
-   - Raul Lara Cabrera <raul.lara@upm.es>
-description : Robot Operating System (ROS)
-math: katex
+  - Alberto Díaz Álvarez <alberto.diaz@upm.es>
+  - Guillermo Iglesias Hernández <guillermo.iglesias@upm.es>
+  - Raúl Lara Cabrera <raul.lara@upm.es>
+paginate : true
+theme : etsisi
+description : >
+  Introducción a la estructura fundamental y a las herramientas esenciales de
+  ROS. Se enfatiza la modularidad y flexibilidad de la biblioteca, detallando
+  cómo facilita la colaboración y el desarrollo rápido en proyectos de robótica.
+keywords: >
+  Robótica, Robot Operating System, ROS, Introducción
+math: mathjax
 ---
 
 <!-- _class: titlepage -->
-![bg left:33%](https://www.ros.org/imgs/humble.png)
 
-<div class="title"><i>Robot Operating System</i> (ROS)</div>
-<div class="subtitle">Robótica</div>
-<div class="author">Alberto Díaz y Raúl Lara</div>
-<div class="date">Curso 2022/2023</div>
-<div class="organization">Departamento de Sistemas Informáticos</div>
+# Robot Operating System</i> (ROS)
+
+## Robótica - Grado en Ingeniería de Computadores
+
+### Departamento de Sistemas Informáticos
+
+#### E.T.S.I. de Sistemas Informáticos - Universidad Politécnica de Madrid
+
+##### 22 de octubre de 2023
 
 [![height:30](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-informational.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 ---
-  
-# Contenidos
 
-<!-- _class: cool-list -->
-
-1. *Introducción*
-2. *Instalación de ROS*
-3. *Nodos*
-4. *Topics y mensajes*
-5. *Servicios*
-6. *Launchers*
-7. *Parámetros*
+# Introducción<!--_class: section-->
 
 ---
 
@@ -106,6 +100,7 @@ ROS2 trata de **superar las limitaciones** impuestas por su predecesor, ROS1
 **Debemos procurar usar ROS2 en la medida de lo posible**
 
 - Y si no es posible, valorar **mucho** migrar de ROS a ROS2
+
 ---
 
 # ¿Y qué vamos a ver?
@@ -125,7 +120,7 @@ Si consideráis que falta, sobra, o que se podría mejorar algo...
 
 ---
 
-# Instalación de ROS2<!--_class: transition-->
+# Instalación de ROS2<!--_class: section-->
 
 ---
 
@@ -142,6 +137,7 @@ La lista se encuentra en [https://index.ros.org/doc/ros2/Releases/](https://inde
 
 Nosotros instalaremos **Humble Hawksbill** sobre **Ubuntu GNU/Linux 22.04**
 
+- Hemos elegido esta versión sobre <i>Iron Irwini</i> porque es LTS
 - Proceso de instalación: <https://docs.ros.org/en/humble/Installation.html>
 
 ---
@@ -186,7 +182,7 @@ Con `-h` accederemos a la ayuda de cualquier comando de `ros2`
 
 ---
 
-# Nodos<!--_class: transition--> 
+# Nodos<!--_class: section--> 
 
 ---
 
@@ -251,13 +247,14 @@ $ source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash
    - Aquí se almacenará todo el código fuente de nuestros componentes
 1. A la misma altura que el directorio `src` (no dentro) creamos nuestro <i>workspace</i>, usando la herramienta `colcon`
 
-   ```bash
-   $ colcon build
-   ```
+```bash
+$ colcon build
+```
 
-   - Creará directorios `install/` y `logs/` si no existen
-   - También los ficheros de configuración de <i>workspace</i> si no existen
-   - Construirá todos los componentes (paquetes) de nuestra aplicación
+- Creará directorios `install/` y `logs/` si no existen
+- También los ficheros de configuración de <i>workspace</i> si no existen
+- Construirá todos los componentes (paquetes) de nuestra aplicación
+
 1. Cargamos `setup.bash` del directorio `install/`, creado tras `build`:
    - Suele ser útil añadirlo al `~/.bashrc`
 
@@ -270,9 +267,9 @@ Los pasos a realizar son los siguientes
 1. Vamos al directorio `src/` de nuestro <i>workspace</i>
 1. Ejecutamos el comando para la creación de paquetes
 
-   ```bash
-   $ ros2 pkg create super_pkg --build-type ament_python --dependencies rclpy
-   ```
+```bash
+$ ros2 pkg create super_pkg --build-type ament_python --dependencies rclpy
+```
 
    - Esto creará un paquete llamado `super_pkg`...
    - ... usando el sistema <i>ament</i> para la creación de paquetes ...
@@ -574,11 +571,7 @@ Los nombres del fuente, el instalado y el nodo no tienen por qué coincidir
 
 ---
 
-<!--
-   _class: transition
--->
-
-# <i>Topics</i> y mensajes
+# <i>Topics</i> y mensajes<!-- _class: section -->
 
 ---
 
@@ -920,11 +913,7 @@ Al igual que hemos hecho con las interfaces preinstaladas, basta con:
 
 ---
 
-<!--
-   _class: transition
--->
-
-# Servicios
+# Servicios<!--_class: section-->
 
 ---
 
@@ -1169,11 +1158,7 @@ class AddTwoIntsClientNode(Node):
 
 ---
 
-<!--
-   _class: transition
--->
-
-# <i>Launchers</i>
+# <i>Launchers</i><!--_class: section-->
 
 ---
 
@@ -1331,7 +1316,7 @@ Podemos especificar desde el <i>launcher</i> los argumentos igual que en la CLI
 
 ---
 
-# Parámetros<!-- _class: transition -->
+# Parámetros<!-- _class: section -->
 
 ---
 
@@ -1463,12 +1448,48 @@ def generate_launch_description():
 
 ---
 
-# Integrando ROS2 y Webots
+# Integración de ROS2 con Webots<!--_class: section-->
 
 ---
 
-Simuladores más usados en ROS:
+# Instalación
 
-Webots | Gazebo | V-REP | Stage | MORSE | ARGoS | Microsoft AirSim | Carla
+En nuestro caso, al usar **Humble Hawksbill** debemos el paquete correspondiente
+
+```bash
+sudo apt install ros-humble-webots-ros2
+```
+
+- Si usamos por ejemplo **Iron Irwini**, el paquete es `ros-iron-webots-ros2`
+
+Establecemos la variable de entorno `WEBOTS_HOME` para ROS2
+
+```bash
+export WEBOTS_HOME=/usr/local/webots
+```
+
+¡Y ya está! Lanzamos una aplicación de ejemplo para probar todo
+
+```bash
+ros2 launch webots_ros2_universal_robot multirobot_launch.py
+```
+
+---
+
+# Conectando los robots con el _framework_
+
+Existen dos tutoriales que explican cómo conectar los robots con ROS2
+
+1. [Tutorial básico](https://docs.ros.org/en/humble/Tutorials/Advanced/Simulators/Webots/Setting-Up-Simulation-Webots-Basic.html): Configuración de una simulación con
+  ROS2
+2. [Tutorial avanzado](https://docs.ros.org/en/humble/Tutorials/Advanced/Simulators/Webots/Setting-Up-Simulation-Webots-Advanced.html): Ampliación del tutorial anterior
+  con un nodo para evitar obstáculos
+
+Estos dan una idea de cómo se integran los robots con ROS2
+
+- Es instalar un paquete, añadir un nodo y lanzar el <i>launcher</i>
+- Es **esencial** entender los tutoriales para realizar la práctica
+
+---
 
 # ¡GRACIAS!<!--_class: transition-->
