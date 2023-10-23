@@ -1476,7 +1476,7 @@ ros2 launch webots_ros2_universal_robot multirobot_launch.py
 
 ---
 
-# Conectando los robots con el _framework_
+# Conectando los robots con el <i>framework</i>
 
 Existen dos tutoriales que explican cómo conectar los robots con ROS2
 
