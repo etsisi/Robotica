@@ -150,13 +150,13 @@ De esta manera comprobamos que todo funciona
 1. En la primera escribimos lo siguiente:
 
    ```bash
-   $ ros2 run demo_nodes_cpp talker
+   ros2 run demo_nodes_cpp talker
    ```
 
 1. En la segunda escribimos lo siguiente:
 
    ```bash
-   $ ros2 run demo_nodes_cpp listener
+   ros2 run demo_nodes_cpp listener
    ```
 
 Si en ambos se ven los mismos mensajes, nuestra instalación es correcta
@@ -182,7 +182,7 @@ Con `-h` accederemos a la ayuda de cualquier comando de `ros2`
 
 ---
 
-# Nodos<!--_class: section--> 
+# Nodos<!--_class: section-->
 
 ---
 
@@ -229,13 +229,13 @@ Herramienta para la gestión de los espacios de trabajo
 Instalación (como superusuario)
 
 ```bash
-$ apt install python3-colcon-common-extensions
+apt install python3-colcon-common-extensions
 ```
 
 Para habilitar el autocompletado (recomendable añadir al `~/.bashrc`)
 
 ```bash
-$ source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash
+source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash
 ```
 
 ---
@@ -248,7 +248,7 @@ $ source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash
 1. A la misma altura que el directorio `src` (no dentro) creamos nuestro <i>workspace</i>, usando la herramienta `colcon`
 
 ```bash
-$ colcon build
+colcon build
 ```
 
 - Creará directorios `install/` y `logs/` si no existen
@@ -268,13 +268,13 @@ Los pasos a realizar son los siguientes
 1. Ejecutamos el comando para la creación de paquetes
 
 ```bash
-$ ros2 pkg create super_pkg --build-type ament_python --dependencies rclpy
+ros2 pkg create super_pkg --build-type ament_python --dependencies rclpy
 ```
 
-   - Esto creará un paquete llamado `super_pkg`...
-   - ... usando el sistema <i>ament</i> para la creación de paquetes ...
-   - ... de tipo `python`
-   - ... dependiente de la librería `rclpy`
+- Esto creará un paquete llamado `super_pkg`...
+- ... usando el sistema <i>ament</i> para la creación de paquetes ...
+- ... de tipo `python`
+- ... dependiente de la librería `rclpy`
 
 `rclpy` es la librería base de ROS y la usaremos prácticamente siempre
 
@@ -390,8 +390,8 @@ from rclpy.node import Node
 Ahora podemos ejecutar nuestro nodo de la siguiente manera:
 
 ```bash
-$ chmod u+x node.py
-$ ./node.py
+chmod u+x node.py
+./node.py
 ```
 
 ---
@@ -1278,7 +1278,7 @@ launch:
 Basta con construir el paquete y lanzar el launcher con el comando `launch`:
 
 ```bash
-$ ros2 launch <PAQUETE> <NUESTRO_LAUNCHER>
+ros2 launch <PAQUETE> <NUESTRO_LAUNCHER>
 ```
 
 **Ojo**, debemos añadir las dependencias en nuestro paquete
