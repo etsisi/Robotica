@@ -1,0 +1,977 @@
+<!DOCTYPE html><html lang="en-US"><head><title>Programación de softbots</title><meta property="og:title" content="Programación de softbots"><meta name="description" content="Conceptos de qué es la visión y cómo influye este concepto dentro del área de la percepción en la robótica
+"><meta property="og:description" content="Conceptos de qué es la visión y cómo influye este concepto dentro del área de la percepción en la robótica
+"><meta name="keywords" content="Robótica,Percepción,Visión"><meta charset="UTF-8"><meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><meta http-equiv="X-UA-Compatible" content="ie=edge"><meta property="og:type" content="website"><meta name="twitter:card" content="summary"><style>@media screen{body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button{-webkit-tap-highlight-color:transparent;-webkit-appearance:none;-moz-appearance:none;appearance:none;background-color:transparent;border:0;color:inherit;cursor:pointer;font-size:inherit;opacity:.8;outline:none;padding:0;transition:opacity .2s linear}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button:disabled,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button:disabled,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button:disabled,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button:disabled{cursor:not-allowed;opacity:.15!important}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button:hover,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button:hover,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button:hover,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button:hover{opacity:1}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button:hover:active,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button:hover:active,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button:hover:active,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button:hover:active{opacity:.6}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button:hover:not(:disabled),body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button:hover:not(:disabled),body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button:hover:not(:disabled),body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button:hover:not(:disabled){transition:none}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=prev],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=prev],body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button.bespoke-marp-presenter-info-page-prev{background:transparent url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSI1IiBkPSJNNjggOTAgMjggNTBsNDAtNDAiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=next],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=next],body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button.bespoke-marp-presenter-info-page-next{background:transparent url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSI1IiBkPSJtMzIgOTAgNDAtNDAtNDAtNDAiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=fullscreen],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=fullscreen]{background:transparent url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZGVmcz48c3R5bGU+LmF7ZmlsbDpub25lO3N0cm9rZTojZmZmO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2Utd2lkdGg6NXB4fTwvc3R5bGU+PC9kZWZzPjxyZWN0IGNsYXNzPSJhIiB4PSIxMCIgeT0iMjAiIHdpZHRoPSI4MCIgaGVpZ2h0PSI2MCIgcng9IjUuNjciLz48cGF0aCBjbGFzcz0iYSIgZD0iTTQwIDcwSDIwVjUwbTIwIDBMMjAgNzBtNDAtNDBoMjB2MjBtLTIwIDAgMjAtMjAiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button.exit[data-bespoke-marp-osc=fullscreen],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button.exit[data-bespoke-marp-osc=fullscreen]{background-image:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZGVmcz48c3R5bGU+LmF7ZmlsbDpub25lO3N0cm9rZTojZmZmO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2Utd2lkdGg6NXB4fTwvc3R5bGU+PC9kZWZzPjxyZWN0IGNsYXNzPSJhIiB4PSIxMCIgeT0iMjAiIHdpZHRoPSI4MCIgaGVpZ2h0PSI2MCIgcng9IjUuNjciLz48cGF0aCBjbGFzcz0iYSIgZD0iTTIwIDUwaDIwdjIwbS0yMCAwIDIwLTIwbTQwIDBINjBWMzBtMjAgMEw2MCA1MCIvPjwvc3ZnPg==")}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=presenter],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=presenter]{background:transparent url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBkPSJNODcuOCA0Ny41Qzg5IDUwIDg3LjcgNTIgODUgNTJIMzVhOC43IDguNyAwIDAgMS03LjItNC41bC0xNS42LTMxQzExIDE0IDEyLjIgMTIgMTUgMTJoNTBhOC44IDguOCAwIDAgMSA3LjIgNC41ek02MCA1MnYzNm0tMTAgMGgyME00NSA0MmgyMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iNSIvPjwvc3ZnPg==") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button.bespoke-marp-presenter-note-bigger{background:transparent url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBkPSJNMTIgNTBoODBNNTIgOTBWMTAiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2Utd2lkdGg9IjUiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button.bespoke-marp-presenter-note-smaller{background:transparent url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBkPSJNMTIgNTBoODAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2Utd2lkdGg9IjUiLz48L3N2Zz4=") no-repeat 50%;background-size:contain;overflow:hidden;text-indent:100%;white-space:nowrap}}.bespoke-marp-note,.bespoke-marp-osc,.bespoke-progress-parent{display:none;transition:none}@media screen{body,html{height:100%;margin:0}body{background:#000;overflow:hidden}svg.bespoke-marp-slide{content-visibility:hidden;opacity:0;pointer-events:none;z-index:-1}svg.bespoke-marp-slide.bespoke-marp-active{content-visibility:visible;opacity:1;pointer-events:auto;z-index:0}svg.bespoke-marp-slide.bespoke-marp-active.bespoke-marp-active-ready *{-webkit-animation-name:__bespoke_marp__!important;animation-name:__bespoke_marp__!important}@supports not (content-visibility:hidden){svg.bespoke-marp-slide[data-bespoke-marp-load=hideable]{display:none}svg.bespoke-marp-slide[data-bespoke-marp-load=hideable].bespoke-marp-active{display:block}}[data-bespoke-marp-fragment=inactive]{visibility:hidden}body[data-bespoke-view=""] .bespoke-marp-parent,body[data-bespoke-view=next] .bespoke-marp-parent{bottom:0;left:0;position:absolute;right:0;top:0}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc{background:rgba(0,0,0,.65);border-radius:7px;bottom:50px;color:#fff;contain:paint;display:block;font-family:Helvetica,Arial,sans-serif;font-size:16px;left:50%;line-height:0;opacity:1;padding:12px;position:absolute;touch-action:manipulation;transform:translateX(-50%);transition:opacity .2s linear;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;white-space:nowrap;will-change:transform;z-index:1}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>*,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>*{margin-left:6px}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>:first-child,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>:first-child{margin-left:0}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>span,body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>span{opacity:.8}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>span[data-bespoke-marp-osc=page],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>span[data-bespoke-marp-osc=page]{display:inline-block;min-width:140px;text-align:center}body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=fullscreen],body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=next],body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=presenter],body[data-bespoke-view=""] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=prev],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=fullscreen],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=next],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=presenter],body[data-bespoke-view=next] .bespoke-marp-parent>.bespoke-marp-osc>button[data-bespoke-marp-osc=prev]{height:32px;line-height:32px;width:32px}body[data-bespoke-view=""] .bespoke-marp-parent.bespoke-marp-inactive,body[data-bespoke-view=next] .bespoke-marp-parent.bespoke-marp-inactive{cursor:none}body[data-bespoke-view=""] .bespoke-marp-parent.bespoke-marp-inactive>.bespoke-marp-osc,body[data-bespoke-view=next] .bespoke-marp-parent.bespoke-marp-inactive>.bespoke-marp-osc{opacity:0;pointer-events:none}body[data-bespoke-view=""] svg.bespoke-marp-slide,body[data-bespoke-view=next] svg.bespoke-marp-slide{height:100%;left:0;position:absolute;top:0;width:100%}body[data-bespoke-view=""] .bespoke-progress-parent{background:#222;display:flex;height:5px;width:100%}body[data-bespoke-view=""] .bespoke-progress-parent+.bespoke-marp-parent{top:5px}body[data-bespoke-view=""] .bespoke-progress-parent .bespoke-progress-bar{background:#0288d1;flex:0 0 0;transition:flex-basis .2s cubic-bezier(0,1,1,1)}body[data-bespoke-view=next]{background:transparent}body[data-bespoke-view=presenter]{background:#161616}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container{display:grid;font-family:Helvetica,Arial,sans-serif;grid-template:"current dragbar next" minmax(140px,1fr) "current dragbar note" 2fr "info    dragbar note" 3em;grid-template-columns:minmax(3px,var(--bespoke-marp-presenter-split-ratio,66%)) 0 minmax(3px,1fr);height:100%;left:0;position:absolute;top:0;width:100%}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-parent{grid-area:current;overflow:hidden;position:relative}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-parent svg.bespoke-marp-slide{height:calc(100% - 40px);left:20px;pointer-events:none;position:absolute;top:20px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;width:calc(100% - 40px)}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-parent svg.bespoke-marp-slide.bespoke-marp-active{filter:drop-shadow(0 3px 10px rgba(0,0,0,.5))}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-dragbar-container{background:#0288d1;cursor:col-resize;grid-area:dragbar;margin-left:-3px;opacity:0;position:relative;transition:opacity .4s linear .1s;width:6px;z-index:10}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-dragbar-container:hover{opacity:1}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-dragbar-container.active{opacity:1;transition-delay:0s}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-next-container{background:#222;cursor:pointer;display:none;grid-area:next;overflow:hidden;position:relative}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-next-container.active{display:block}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-next-container iframe.bespoke-marp-presenter-next{background:transparent;border:0;display:block;filter:drop-shadow(0 3px 10px rgba(0,0,0,.5));height:calc(100% - 40px);left:20px;pointer-events:none;position:absolute;top:20px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;width:calc(100% - 40px)}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container{background:#222;color:#eee;grid-area:note;position:relative;z-index:1}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container button{height:1.5em;line-height:1.5em;width:1.5em}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-presenter-note-wrapper{bottom:0;display:block;left:0;position:absolute;right:0;top:0}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-presenter-note-buttons{background:rgba(0,0,0,.65);border-radius:4px;bottom:0;display:flex;gap:4px;margin:12px;opacity:0;padding:6px;pointer-events:none;position:absolute;right:0;transition:opacity .2s linear}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-presenter-note-buttons:focus-within,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-presenter-note-wrapper:focus-within+.bespoke-marp-presenter-note-buttons,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container:hover .bespoke-marp-presenter-note-buttons{opacity:1;pointer-events:auto}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note{word-wrap:break-word;box-sizing:border-box;font-size:calc(1.1em*var(--bespoke-marp-note-font-scale, 1));height:calc(100% - 40px);margin:20px;overflow:auto;padding-right:3px;scrollbar-color:hsla(0,0%,93%,.5) transparent;scrollbar-width:thin;white-space:pre-wrap;width:calc(100% - 40px)}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note::-webkit-scrollbar{width:6px}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note::-webkit-scrollbar-track{background:transparent}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note::-webkit-scrollbar-thumb{background:hsla(0,0%,93%,.5);border-radius:6px}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note:empty{pointer-events:none}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note.active{display:block}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note p:first-child{margin-top:0}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-note-container .bespoke-marp-note p:last-child{margin-bottom:0}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container{align-items:center;box-sizing:border-box;color:#eee;display:flex;flex-wrap:nowrap;grid-area:info;justify-content:center;overflow:hidden;padding:0 10px}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-page,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-time,body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-timer{box-sizing:border-box;display:block;padding:0 10px;white-space:nowrap;width:100%}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container button{height:1.5em;line-height:1.5em;width:1.5em}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-page{order:2;text-align:center}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-page .bespoke-marp-presenter-info-page-text{display:inline-block;min-width:120px;text-align:center}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-time{color:#999;order:1;text-align:left}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-timer{color:#999;order:3;text-align:right}body[data-bespoke-view=presenter] .bespoke-marp-presenter-container .bespoke-marp-presenter-info-container .bespoke-marp-presenter-info-timer:hover{cursor:pointer}}@media print{.bespoke-marp-presenter-info-container,.bespoke-marp-presenter-next-container,.bespoke-marp-presenter-note-container{display:none}}</style><style>div#p>svg>foreignObject>section{width:1280px;height:720px;box-sizing:border-box;overflow:hidden;position:relative;scroll-snap-align:center center}div#p>svg>foreignObject>section:after{bottom:0;content:attr(data-marpit-pagination);padding:inherit;pointer-events:none;position:absolute;right:0}div#p>svg>foreignObject>section:not([data-marpit-pagination]):after{display:none}/* Normalization */div#p>svg>foreignObject>section h1{font-size:2em;margin:0.67em 0}div#p>svg>foreignObject>section video::-webkit-media-controls{will-change:transform}@page{size:1280px 720px;margin:0}@media print{body,html{background-color:#fff;margin:0;page-break-inside:avoid;break-inside:avoid-page}div#p>svg>foreignObject>section{page-break-before:always;break-before:page}div#p>svg>foreignObject>section,div#p>svg>foreignObject>section *{-webkit-print-color-adjust:exact!important;animation-delay:0s!important;animation-duration:0s!important;color-adjust:exact!important;transition:none!important}div#p>svg[data-marpit-svg]{display:block;height:100vh;width:100vw}}
+/*!
+ * Marp default theme.
+ *
+ * @theme default
+ * @author Yuki Hattori
+ *
+ * @auto-scaling true
+ * @size 16:9 1280px 720px
+ * @size 4:3 960px 720px
+ */div#p>svg>foreignObject>section{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;word-wrap:break-word;background-color:#fff;color:#24292f;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;font-size:16px;line-height:1.5;margin:0}div#p>svg>foreignObject>section{--marpit-root-font-size:16px}div#p>svg>foreignObject>section h1:hover .anchor .octicon-link:before,div#p>svg>foreignObject>section h2:hover .anchor .octicon-link:before,div#p>svg>foreignObject>section h3:hover .anchor .octicon-link:before,div#p>svg>foreignObject>section h4:hover .anchor .octicon-link:before,div#p>svg>foreignObject>section h5:hover .anchor .octicon-link:before,div#p>svg>foreignObject>section h6:hover .anchor .octicon-link:before{background-color:currentColor;content:" ";display:inline-block;height:16px;-webkit-mask-image:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 0 0 1.06 1.06l1.25-1.25a2 2 0 1 1 2.83 2.83l-2.5 2.5a2 2 0 0 1-2.83 0 .75.75 0 0 0-1.06 1.06 3.5 3.5 0 0 0 4.95 0l2.5-2.5a3.5 3.5 0 0 0-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 0 1 0-2.83l2.5-2.5a2 2 0 0 1 2.83 0 .75.75 0 0 0 1.06-1.06 3.5 3.5 0 0 0-4.95 0l-2.5 2.5a3.5 3.5 0 0 0 4.95 4.95l1.25-1.25a.75.75 0 0 0-1.06-1.06l-1.25 1.25a2 2 0 0 1-2.83 0z"/></svg>');mask-image:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 0 0 1.06 1.06l1.25-1.25a2 2 0 1 1 2.83 2.83l-2.5 2.5a2 2 0 0 1-2.83 0 .75.75 0 0 0-1.06 1.06 3.5 3.5 0 0 0 4.95 0l2.5-2.5a3.5 3.5 0 0 0-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 0 1 0-2.83l2.5-2.5a2 2 0 0 1 2.83 0 .75.75 0 0 0 1.06-1.06 3.5 3.5 0 0 0-4.95 0l-2.5 2.5a3.5 3.5 0 0 0 4.95 4.95l1.25-1.25a.75.75 0 0 0-1.06-1.06l-1.25 1.25a2 2 0 0 1-2.83 0z"/></svg>');width:16px}div#p>svg>foreignObject>section details,div#p>svg>foreignObject>section figcaption,div#p>svg>foreignObject>section figure{display:block}div#p>svg>foreignObject>section summary{display:list-item}div#p>svg>foreignObject>section [hidden]{display:none!important}div#p>svg>foreignObject>section a{background-color:transparent;color:#0969da;text-decoration:none}div#p>svg>foreignObject>section a:active,div#p>svg>foreignObject>section a:hover{outline-width:0}div#p>svg>foreignObject>section abbr[title]{border-bottom:none;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}div#p>svg>foreignObject>section b,div#p>svg>foreignObject>section strong{font-weight:600}div#p>svg>foreignObject>section dfn{font-style:italic}div#p>svg>foreignObject>section h1{border-bottom:1px solid #d8dee4;font-size:2em;font-weight:600;margin:.67em 0;padding-bottom:.3em}div#p>svg>foreignObject>section mark{background-color:#fff8c5;color:#24292f}div#p>svg>foreignObject>section small{font-size:90%}div#p>svg>foreignObject>section sub,div#p>svg>foreignObject>section sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}div#p>svg>foreignObject>section sub{bottom:-.25em}div#p>svg>foreignObject>section sup{top:-.5em}div#p>svg>foreignObject>section img{background-color:#fff;border-style:none;box-sizing:content-box;max-width:100%}div#p>svg>foreignObject>section code,div#p>svg>foreignObject>section kbd,div#p>svg>foreignObject>section pre,div#p>svg>foreignObject>section samp{font-family:monospace,monospace;font-size:1em}div#p>svg>foreignObject>section figure{margin:1em 40px}div#p>svg>foreignObject>section hr{background:transparent;background-color:#d0d7de;border:0;box-sizing:content-box;height:.25em;margin:24px 0;overflow:hidden;padding:0}div#p>svg>foreignObject>section input{font:inherit;font-family:inherit;font-size:inherit;line-height:inherit;margin:0;overflow:visible}div#p>svg>foreignObject>section [type=button],div#p>svg>foreignObject>section [type=reset],div#p>svg>foreignObject>section [type=submit]{-webkit-appearance:button}div#p>svg>foreignObject>section [type=button]::-moz-focus-inner,div#p>svg>foreignObject>section [type=reset]::-moz-focus-inner,div#p>svg>foreignObject>section [type=submit]::-moz-focus-inner{border-style:none;padding:0}div#p>svg>foreignObject>section [type=button]:-moz-focusring,div#p>svg>foreignObject>section [type=reset]:-moz-focusring,div#p>svg>foreignObject>section [type=submit]:-moz-focusring{outline:1px dotted ButtonText}div#p>svg>foreignObject>section [type=checkbox],div#p>svg>foreignObject>section [type=radio]{box-sizing:border-box;padding:0}div#p>svg>foreignObject>section [type=number]::-webkit-inner-spin-button,div#p>svg>foreignObject>section [type=number]::-webkit-outer-spin-button{height:auto}div#p>svg>foreignObject>section [type=search]{-webkit-appearance:textfield;outline-offset:-2px}div#p>svg>foreignObject>section [type=search]::-webkit-search-cancel-button,div#p>svg>foreignObject>section [type=search]::-webkit-search-decoration{-webkit-appearance:none}div#p>svg>foreignObject>section ::-webkit-input-placeholder{color:inherit;opacity:.54}div#p>svg>foreignObject>section ::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}div#p>svg>foreignObject>section a:hover{text-decoration:underline}div#p>svg>foreignObject>section hr:after,div#p>svg>foreignObject>section hr:before{content:"";display:table}div#p>svg>foreignObject>section hr:after{clear:both}div#p>svg>foreignObject>section table{border-collapse:collapse;border-spacing:0;display:block;max-width:100%;overflow:auto;width:-webkit-max-content;width:-moz-max-content;width:max-content}div#p>svg>foreignObject>section td,div#p>svg>foreignObject>section th{padding:0}div#p>svg>foreignObject>section details summary{cursor:pointer}div#p>svg>foreignObject>section details:not([open])>:not(summary){display:none!important}div#p>svg>foreignObject>section kbd{background-color:#f6f8fa;border:1px solid rgba(175,184,193,.2);border-radius:6px;box-shadow:inset 0 -1px 0 rgba(175,184,193,.2);color:#24292f;display:inline-block;font:11px ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;line-height:10px;padding:3px 5px;vertical-align:middle}div#p>svg>foreignObject>section h1,div#p>svg>foreignObject>section h2,div#p>svg>foreignObject>section h3,div#p>svg>foreignObject>section h4,div#p>svg>foreignObject>section h5,div#p>svg>foreignObject>section h6{font-weight:600;line-height:1.25;margin-bottom:16px;margin-top:24px}div#p>svg>foreignObject>section h2{border-bottom:1px solid #d8dee4;font-size:1.5em;font-weight:600;padding-bottom:.3em}div#p>svg>foreignObject>section h3{font-size:1.25em;font-weight:600}div#p>svg>foreignObject>section h4{font-size:1em;font-weight:600}div#p>svg>foreignObject>section h5{font-size:.875em;font-weight:600}div#p>svg>foreignObject>section h6{color:#57606a;font-size:.85em;font-weight:600}div#p>svg>foreignObject>section p{margin-bottom:10px;margin-top:0}div#p>svg>foreignObject>section blockquote{border-left:.25em solid #d0d7de;color:#57606a;margin:0;padding:0 1em}div#p>svg>foreignObject>section ol,div#p>svg>foreignObject>section ul{margin-bottom:0;margin-top:0;padding-left:2em}div#p>svg>foreignObject>section ol ol,div#p>svg>foreignObject>section ul ol{list-style-type:lower-roman}div#p>svg>foreignObject>section ol ol ol,div#p>svg>foreignObject>section ol ul ol,div#p>svg>foreignObject>section ul ol ol,div#p>svg>foreignObject>section ul ul ol{list-style-type:lower-alpha}div#p>svg>foreignObject>section dd{margin-left:0}div#p>svg>foreignObject>section code,div#p>svg>foreignObject>section pre,div#p>svg>foreignObject>section tt{font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px}div#p>svg>foreignObject>section pre{word-wrap:normal;margin-bottom:0;margin-top:0}div#p>svg>foreignObject>section .octicon{fill:currentColor;display:inline-block;overflow:visible!important;vertical-align:text-bottom}div#p>svg>foreignObject>section ::-moz-placeholder{color:#6e7781;opacity:1}div#p>svg>foreignObject>section :-ms-input-placeholder{color:#6e7781;opacity:1}div#p>svg>foreignObject>section ::placeholder{color:#6e7781;opacity:1}div#p>svg>foreignObject>section input::-webkit-inner-spin-button,div#p>svg>foreignObject>section input::-webkit-outer-spin-button{-webkit-appearance:none;appearance:none;margin:0}div#p>svg>foreignObject>section .pl-c{color:#6e7781}div#p>svg>foreignObject>section .pl-c1,div#p>svg>foreignObject>section .pl-s .pl-v{color:#0550ae}div#p>svg>foreignObject>section .pl-e,div#p>svg>foreignObject>section .pl-en{color:#8250df}div#p>svg>foreignObject>section .pl-s .pl-s1,div#p>svg>foreignObject>section .pl-smi{color:#24292f}div#p>svg>foreignObject>section .pl-ent{color:#116329}div#p>svg>foreignObject>section .pl-k{color:#cf222e}div#p>svg>foreignObject>section .pl-pds,div#p>svg>foreignObject>section .pl-s,div#p>svg>foreignObject>section .pl-s .pl-pse .pl-s1,div#p>svg>foreignObject>section .pl-sr,div#p>svg>foreignObject>section .pl-sr .pl-cce,div#p>svg>foreignObject>section .pl-sr .pl-sra,div#p>svg>foreignObject>section .pl-sr .pl-sre{color:#0a3069}div#p>svg>foreignObject>section .pl-smw,div#p>svg>foreignObject>section .pl-v{color:#953800}div#p>svg>foreignObject>section .pl-bu{color:#82071e}div#p>svg>foreignObject>section .pl-ii{background-color:#82071e;color:#f6f8fa}div#p>svg>foreignObject>section .pl-c2{background-color:#cf222e;color:#f6f8fa}div#p>svg>foreignObject>section .pl-sr .pl-cce{color:#116329;font-weight:700}div#p>svg>foreignObject>section .pl-ml{color:#3b2300}div#p>svg>foreignObject>section .pl-mh,div#p>svg>foreignObject>section .pl-mh .pl-en,div#p>svg>foreignObject>section .pl-ms{color:#0550ae;font-weight:700}div#p>svg>foreignObject>section .pl-mi{color:#24292f;font-style:italic}div#p>svg>foreignObject>section .pl-mb{color:#24292f;font-weight:700}div#p>svg>foreignObject>section .pl-md{background-color:#ffebe9;color:#82071e}div#p>svg>foreignObject>section .pl-mi1{background-color:#dafbe1;color:#116329}div#p>svg>foreignObject>section .pl-mc{background-color:#ffd8b5;color:#953800}div#p>svg>foreignObject>section .pl-mi2{background-color:#0550ae;color:#eaeef2}div#p>svg>foreignObject>section .pl-mdr{color:#8250df;font-weight:700}div#p>svg>foreignObject>section .pl-ba{color:#57606a}div#p>svg>foreignObject>section .pl-sg{color:#8c959f}div#p>svg>foreignObject>section .pl-corl{color:#0a3069;text-decoration:underline}div#p>svg>foreignObject>section [data-catalyst]{display:block}div#p>svg>foreignObject>section g-emoji{font-family:Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;font-size:1em;font-style:normal!important;font-weight:400;line-height:1;vertical-align:-.075em}div#p>svg>foreignObject>section g-emoji img{height:1em;width:1em}div#p>svg>foreignObject>section:after,div#p>svg>foreignObject>section:before{
+  /* content:""; */display:table}div#p>svg>foreignObject>section:after{clear:both}div#p>svg>foreignObject>section>:first-child{margin-top:0!important}div#p>svg>foreignObject>section>:last-child{margin-bottom:0!important}div#p>svg>foreignObject>section a:not([href]){color:inherit;text-decoration:none}div#p>svg>foreignObject>section .absent{color:#cf222e}div#p>svg>foreignObject>section .anchor{float:left;line-height:1;margin-left:-20px;padding-right:4px}div#p>svg>foreignObject>section .anchor:focus{outline:none}div#p>svg>foreignObject>section blockquote,div#p>svg>foreignObject>section details,div#p>svg>foreignObject>section dl,div#p>svg>foreignObject>section ol,div#p>svg>foreignObject>section p,div#p>svg>foreignObject>section pre,div#p>svg>foreignObject>section table,div#p>svg>foreignObject>section ul{margin-bottom:16px;margin-top:0}div#p>svg>foreignObject>section blockquote>:first-child{margin-top:0}div#p>svg>foreignObject>section blockquote>:last-child{margin-bottom:0}div#p>svg>foreignObject>section sup>a:before{content:"["}div#p>svg>foreignObject>section sup>a:after{content:"]"}div#p>svg>foreignObject>section h1 .octicon-link,div#p>svg>foreignObject>section h2 .octicon-link,div#p>svg>foreignObject>section h3 .octicon-link,div#p>svg>foreignObject>section h4 .octicon-link,div#p>svg>foreignObject>section h5 .octicon-link,div#p>svg>foreignObject>section h6 .octicon-link{color:#24292f;vertical-align:middle;visibility:hidden}div#p>svg>foreignObject>section h1:hover .anchor,div#p>svg>foreignObject>section h2:hover .anchor,div#p>svg>foreignObject>section h3:hover .anchor,div#p>svg>foreignObject>section h4:hover .anchor,div#p>svg>foreignObject>section h5:hover .anchor,div#p>svg>foreignObject>section h6:hover .anchor{text-decoration:none}div#p>svg>foreignObject>section h1:hover .anchor .octicon-link,div#p>svg>foreignObject>section h2:hover .anchor .octicon-link,div#p>svg>foreignObject>section h3:hover .anchor .octicon-link,div#p>svg>foreignObject>section h4:hover .anchor .octicon-link,div#p>svg>foreignObject>section h5:hover .anchor .octicon-link,div#p>svg>foreignObject>section h6:hover .anchor .octicon-link{visibility:visible}div#p>svg>foreignObject>section h1 code,div#p>svg>foreignObject>section h1 tt,div#p>svg>foreignObject>section h2 code,div#p>svg>foreignObject>section h2 tt,div#p>svg>foreignObject>section h3 code,div#p>svg>foreignObject>section h3 tt,div#p>svg>foreignObject>section h4 code,div#p>svg>foreignObject>section h4 tt,div#p>svg>foreignObject>section h5 code,div#p>svg>foreignObject>section h5 tt,div#p>svg>foreignObject>section h6 code,div#p>svg>foreignObject>section h6 tt{font-size:inherit;padding:0 .2em}div#p>svg>foreignObject>section ol.no-list,div#p>svg>foreignObject>section ul.no-list{list-style-type:none;padding:0}div#p>svg>foreignObject>section ol[type="1"]{list-style-type:decimal}div#p>svg>foreignObject>section ol[type=a]{list-style-type:lower-alpha}div#p>svg>foreignObject>section ol[type=i]{list-style-type:lower-roman}div#p>svg>foreignObject>section div>ol:not([type]){list-style-type:decimal}div#p>svg>foreignObject>section ol ol,div#p>svg>foreignObject>section ol ul,div#p>svg>foreignObject>section ul ol,div#p>svg>foreignObject>section ul ul{margin-bottom:0;margin-top:0}div#p>svg>foreignObject>section li>p{margin-top:16px}div#p>svg>foreignObject>section li+li{margin-top:.25em}div#p>svg>foreignObject>section dl{padding:0}div#p>svg>foreignObject>section dl dt{font-size:1em;font-style:italic;font-weight:600;margin-top:16px;padding:0}div#p>svg>foreignObject>section dl dd{margin-bottom:16px;padding:0 16px}div#p>svg>foreignObject>section table th{font-weight:600}div#p>svg>foreignObject>section table td,div#p>svg>foreignObject>section table th{border:1px solid #d0d7de;padding:6px 13px}div#p>svg>foreignObject>section table tr{background-color:#fff;border-top:1px solid #d8dee4}div#p>svg>foreignObject>section table tr:nth-child(2n){background-color:#f6f8fa}div#p>svg>foreignObject>section table img{background-color:transparent}div#p>svg>foreignObject>section img[align=right]{padding-left:20px}div#p>svg>foreignObject>section img[align=left]{padding-right:20px}div#p>svg>foreignObject>section .emoji{background-color:transparent;max-width:none;vertical-align:text-top}div#p>svg>foreignObject>section span.frame,div#p>svg>foreignObject>section span.frame>span{display:block;overflow:hidden}div#p>svg>foreignObject>section span.frame>span{border:1px solid #d0d7de;float:left;margin:13px 0 0;padding:7px;width:auto}div#p>svg>foreignObject>section span.frame span img{display:block;float:left}div#p>svg>foreignObject>section span.frame span span{clear:both;color:#24292f;display:block;padding:5px 0 0}div#p>svg>foreignObject>section span.align-center{clear:both;display:block;overflow:hidden}div#p>svg>foreignObject>section span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}div#p>svg>foreignObject>section span.align-center span img{margin:0 auto;text-align:center}div#p>svg>foreignObject>section span.align-right{clear:both;display:block;overflow:hidden}div#p>svg>foreignObject>section span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}div#p>svg>foreignObject>section span.align-right span img{margin:0;text-align:right}div#p>svg>foreignObject>section span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}div#p>svg>foreignObject>section span.float-left span{margin:13px 0 0}div#p>svg>foreignObject>section span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}div#p>svg>foreignObject>section span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}div#p>svg>foreignObject>section code,div#p>svg>foreignObject>section tt{background-color:rgba(175,184,193,.2);border-radius:6px;font-size:85%;margin:0;padding:.2em .4em}div#p>svg>foreignObject>section code br,div#p>svg>foreignObject>section tt br{display:none}div#p>svg>foreignObject>section del code{text-decoration:inherit}div#p>svg>foreignObject>section pre code{font-size:100%}div#p>svg>foreignObject>section pre>code{background:transparent;border:0;margin:0;padding:0;white-space:pre;word-break:normal}div#p>svg>foreignObject>section .highlight{margin-bottom:16px}div#p>svg>foreignObject>section .highlight pre{margin-bottom:0;word-break:normal}div#p>svg>foreignObject>section pre{background-color:#f6f8fa;border-radius:6px;font-size:85%;line-height:1.45;overflow:auto;padding:16px}div#p>svg>foreignObject>section pre code,div#p>svg>foreignObject>section pre tt{word-wrap:normal;background-color:transparent;border:0;display:inline;line-height:inherit;margin:0;max-width:auto;overflow:visible;padding:0}div#p>svg>foreignObject>section .csv-data td,div#p>svg>foreignObject>section .csv-data th{font-size:12px;line-height:1;overflow:hidden;padding:5px;text-align:left;white-space:nowrap}div#p>svg>foreignObject>section .csv-data .blob-num{background:#fff;border:0;padding:10px 8px 9px;text-align:right}div#p>svg>foreignObject>section .csv-data tr{border-top:0}div#p>svg>foreignObject>section .csv-data th{background:#f6f8fa;border-top:0;font-weight:600}div#p>svg>foreignObject>section .footnotes{border-top:1px solid #d0d7de;color:#57606a;font-size:12px}div#p>svg>foreignObject>section div#p>svg>foreignObject>section section.footnotes{--marpit-root-font-size:12px}div#p>svg>foreignObject>section .footnotes ol{padding-left:16px}div#p>svg>foreignObject>section .footnotes li{position:relative}div#p>svg>foreignObject>section .footnotes li:target:before{border:2px solid #0969da;border-radius:6px;bottom:-8px;content:"";left:-24px;pointer-events:none;position:absolute;right:-8px;top:-8px}div#p>svg>foreignObject>section .footnotes li:target{color:#24292f}div#p>svg>foreignObject>section .footnotes .data-footnote-backref g-emoji{font-family:monospace}div#p>svg>foreignObject>section .task-list-item{list-style-type:none}div#p>svg>foreignObject>section .task-list-item label{font-weight:400}div#p>svg>foreignObject>section .task-list-item.enabled label{cursor:pointer}div#p>svg>foreignObject>section .task-list-item+.task-list-item{margin-top:3px}div#p>svg>foreignObject>section .task-list-item .handle{display:none}div#p>svg>foreignObject>section .task-list-item-checkbox{margin:0 .2em .25em -1.6em;vertical-align:middle}div#p>svg>foreignObject>section .contains-task-list:dir(rtl) .task-list-item-checkbox{margin:0 -1.6em .25em .2em}div#p>svg>foreignObject>section ::-webkit-calendar-picker-indicator{filter:invert(50%)}div#p>svg>foreignObject>section .hljs{background:#fff;color:#333;display:block;overflow-x:auto;padding:.5em}div#p>svg>foreignObject>section .hljs-comment,div#p>svg>foreignObject>section .hljs-meta{color:#969896}div#p>svg>foreignObject>section .hljs-emphasis,div#p>svg>foreignObject>section .hljs-quote,div#p>svg>foreignObject>section .hljs-strong,div#p>svg>foreignObject>section .hljs-template-variable,div#p>svg>foreignObject>section .hljs-variable{color:#df5000}div#p>svg>foreignObject>section .hljs-keyword,div#p>svg>foreignObject>section .hljs-selector-tag,div#p>svg>foreignObject>section .hljs-type{color:#d73a49}div#p>svg>foreignObject>section .hljs-attribute,div#p>svg>foreignObject>section .hljs-bullet,div#p>svg>foreignObject>section .hljs-literal,div#p>svg>foreignObject>section .hljs-symbol{color:#0086b3}div#p>svg>foreignObject>section .hljs-name,div#p>svg>foreignObject>section .hljs-section{color:#63a35c}div#p>svg>foreignObject>section .hljs-tag{color:#333}div#p>svg>foreignObject>section .hljs-attr,div#p>svg>foreignObject>section .hljs-selector-attr,div#p>svg>foreignObject>section .hljs-selector-class,div#p>svg>foreignObject>section .hljs-selector-id,div#p>svg>foreignObject>section .hljs-selector-pseudo,div#p>svg>foreignObject>section .hljs-title{color:#6f42c1}div#p>svg>foreignObject>section .hljs-addition{background-color:#eaffea;color:#55a532}div#p>svg>foreignObject>section .hljs-deletion{background-color:#ffecec;color:#bd2c00}div#p>svg>foreignObject>section .hljs-link{text-decoration:underline}div#p>svg>foreignObject>section .hljs-number{color:#005cc5}div#p>svg>foreignObject>section .hljs-string{color:#032f62}div#p>svg>foreignObject>section svg[data-marp-fitting=svg]{max-height:563px}div#p>svg>foreignObject>section h1{color:#246;font-size:1.6em}div#p>svg>foreignObject>section h1,div#p>svg>foreignObject>section h2{border-bottom:none}div#p>svg>foreignObject>section h2{font-size:1.3em}div#p>svg>foreignObject>section h3{font-size:1.1em}div#p>svg>foreignObject>section h4{font-size:1.05em}div#p>svg>foreignObject>section h5{font-size:1em}div#p>svg>foreignObject>section h6{font-size:.9em}div#p>svg>foreignObject>section h1 strong,div#p>svg>foreignObject>section h2 strong,div#p>svg>foreignObject>section h3 strong,div#p>svg>foreignObject>section h4 strong,div#p>svg>foreignObject>section h5 strong,div#p>svg>foreignObject>section h6 strong{color:#48c;font-weight:inherit}div#p>svg>foreignObject>section hr{height:0;padding-top:.25em}div#p>svg>foreignObject>section pre{border:1px solid #999;line-height:1.15;overflow:visible}div#p>svg>foreignObject>section pre code svg[data-marp-fitting=svg]{max-height:529px}div#p>svg>foreignObject>section footer,div#p>svg>foreignObject>section header{color:hsla(0,0%,40%,.75);font-size:18px;left:30px;margin:0;position:absolute}div#p>svg>foreignObject>section header{top:21px}div#p>svg>foreignObject>section footer{bottom:21px}div#p>svg>foreignObject>section{align-items:stretch;background:#fff;display:flex;flex-flow:column nowrap;font-size:29px;height:720px;justify-content:center;padding:78.5px;width:1280px}div#p>svg>foreignObject>section{--marpit-root-font-size:29px}div#p>svg>foreignObject>section>:last-child,div#p>svg>foreignObject>section[data-footer]>:nth-last-child(2){margin-bottom:0}div#p>svg>foreignObject>section>:first-child,div#p>svg>foreignObject>section>header:first-child+*{margin-top:0}div#p>svg>foreignObject>section:after{bottom:21px;color:#777;font-size:24px;padding:0;position:absolute;right:30px}div#p>svg>foreignObject>section:after{--marpit-root-font-size:24px}div#p>svg>foreignObject>section.invert{background-color:#222;color:#e6eaf0}div#p>svg>foreignObject>section.invert:after{color:#999}div#p>svg>foreignObject>section.invert img{background-color:transparent}div#p>svg>foreignObject>section.invert a{color:#50b3ff}div#p>svg>foreignObject>section.invert h1{color:#a3c5e7}div#p>svg>foreignObject>section.invert h2,div#p>svg>foreignObject>section.invert h3,div#p>svg>foreignObject>section.invert h4,div#p>svg>foreignObject>section.invert h5{color:#ebeff5}div#p>svg>foreignObject>section.invert blockquote,div#p>svg>foreignObject>section.invert h6{border-color:#3d3f43;color:#939699}div#p>svg>foreignObject>section.invert h1 strong,div#p>svg>foreignObject>section.invert h2 strong,div#p>svg>foreignObject>section.invert h3 strong,div#p>svg>foreignObject>section.invert h4 strong,div#p>svg>foreignObject>section.invert h5 strong,div#p>svg>foreignObject>section.invert h6 strong{color:#7bf}div#p>svg>foreignObject>section.invert hr{background-color:#3d3f43}div#p>svg>foreignObject>section.invert footer,div#p>svg>foreignObject>section.invert header{color:hsla(0,0%,60%,.75)}div#p>svg>foreignObject>section.invert code,div#p>svg>foreignObject>section.invert kbd{background-color:#111}div#p>svg>foreignObject>section.invert kbd{border-color:#666;box-shadow:inset 0 -1px 0 #555;color:#e6eaf0}div#p>svg>foreignObject>section.invert table tr{background-color:#12181d;border-color:#60657b}div#p>svg>foreignObject>section.invert table tr:nth-child(2n){background-color:#1b2024}div#p>svg>foreignObject>section.invert table td,div#p>svg>foreignObject>section.invert table th{border-color:#5b5e61}div#p>svg>foreignObject>section.invert pre{background-color:#0a0e12;border-color:#777}div#p>svg>foreignObject>section.invert pre code{background-color:transparent}div#p>svg>foreignObject>section[data-color] h1,div#p>svg>foreignObject>section[data-color] h2,div#p>svg>foreignObject>section[data-color] h3,div#p>svg>foreignObject>section[data-color] h4,div#p>svg>foreignObject>section[data-color] h5,div#p>svg>foreignObject>section[data-color] h6{color:currentColor}div#p>svg>foreignObject>section svg[data-marp-fitting=svg]{display:block;height:auto;width:100%}@supports (-ms-ime-align:auto){div#p>svg>foreignObject>section svg[data-marp-fitting=svg]{position:static}}div#p>svg>foreignObject>section svg[data-marp-fitting=svg].__reflow__{content:""}@supports (-ms-ime-align:auto){div#p>svg>foreignObject>section svg[data-marp-fitting=svg].__reflow__{position:relative}}div#p>svg>foreignObject>section [data-marp-fitting-svg-content]{display:table;white-space:nowrap;width:-webkit-max-content;width:-moz-max-content;width:max-content}div#p>svg>foreignObject>section [data-marp-fitting-svg-content-wrap]{white-space:pre}div#p>svg>foreignObject>section img[data-marp-twemoji]{background:transparent;height:1em;margin:0 .05em 0 .1em;vertical-align:-.1em;width:1em}
+
+/* @theme etsisi */
+
+/*****************
+ @author: Alberto Díaz-Álvarez
+ @version: 1.0
+ @update: 2022-01-27
+ Based on the work of Paulo Cunha (https://github.com/cunhapaulo/marpstyle)
+*****************/
+
+/**********************************************************************/
+/* MAIN STYLES */
+/**/div#p>svg>foreignObject>section:not(a){--letter-spacing:0.125px;
+
+  /* Reducir todos los colores de la plantilla a los indicados aquí: */--color-primary:#002b36;--color-secondary:#1b998b;--color-tertiary:#f5f5f5;--color-success:#12685e;--color-warning:#d1d646;--color-error:#df2935;--color-neutral:#adadad}
+
+/***************** COMMON STRUCTURE **********************/div#p>svg>foreignObject>section h1{color:var(--color-primary);border-bottom:1px solid var(--color-secondary)}div#p>svg>foreignObject>section code{font-size:100%;font-family:"Fira Code",monospace;line-height:1.2em;padding:0em}div#p>svg>foreignObject>section{background-image:url(https://www.upm.es/sfs/Rectorado/Gabinete%20del%20Rector/Logos/EU_Informatica/ETSI%20SIST_INFORM_COLOR.png);background-size:auto 60px;background-repeat:no-repeat;background-position:right 1em top 1em}div#p>svg>foreignObject>section p{margin-top:0.5em;margin-bottom:0.25em;line-height:1.3em;font-size:100%}div#p>svg>foreignObject>section sup{font-size:calc(var(--marpit-root-font-size, 1rem) * 0.4);display:inline-block;vertical-align:super}div#p>svg>foreignObject>section li{margin-top:0.5em;margin-bottom:0.25em;line-height:1.25em;font-size:95%}div#p>svg>foreignObject>section li>ul>li{margin-top:0.5em;margin-bottom:0.25em;line-height:1em;font-size:85%}div#p>svg>foreignObject>section em{color:var(--color-error);font-style:normal}div#p>svg>foreignObject>section strong{font-weight:600}div#p>svg>foreignObject>section figcaption{font-size:0.7em;color:var(--color-primary);text-align:center}div#p>svg>foreignObject>section figcaption>b{text-align:center;font-weight:600}div#p>svg>foreignObject>section:after{color:var(--color-neutral);font-size:0.7em;content:" " attr(data-marpit-pagination) " / " attr(data-marpit-pagination-total) " "}div#p>svg>foreignObject>section:after{--marpit-root-font-size:0.7em}div#p>svg>foreignObject>section .center{text-align:center}div#p>svg>foreignObject>section .right{text-align:right}div#p>svg>foreignObject>section .small{font-size:24px}div#p>svg>foreignObject>section section.small{--marpit-root-font-size:24px}div#p>svg>foreignObject>section table{margin-right:auto;margin-left:auto;margin-top:20px;width:auto;border:0}div#p>svg>foreignObject>section table th{background-color:var(--color-secondary);color:white;border:0;border-top:rgb(253,74,3) solid 2px;border-top:rgb(255,0,0) solid 2px}div#p>svg>foreignObject>section table td{border:0}div#p>svg>foreignObject>section table tr:nth-child(2){background-color:#dedede}div#p>svg>foreignObject>section table tr:last-child{border-bottom:rgb(253,74,3) solid 2px}div#p>svg>foreignObject>section tr:nth-child(2n){background-color:#e8edf1!important}div#p>svg>foreignObject>section tr:hover{color:rgb(36,34,34);background-color:rgb(255,204,0);font-weight:bold}div#p>svg>foreignObject>section blockquote{color:var(--color-primary);font-size:unset;border-top:0.1em dashed var(--color-secondary);border-left:0.1em dashed var(--color-secondary);padding-top:0.1em;padding-left:0.5em;margin-top:auto}div#p>svg>foreignObject>section blockquote strong{color:rgb(56,32,32);font-weight:bold;font-size:1.0em}div#p>svg>foreignObject>section blockquote p{font-size:0.6em}div#p>svg>foreignObject>section blockquote sup{vertical-align:sub}div#p>svg>foreignObject>section .columns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:calc(var(--marpit-root-font-size, 1rem) * 1)
+  /* justify-content: center !important; */}div#p>svg>foreignObject>section .columns-center{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:calc(var(--marpit-root-font-size, 1rem) * 1);justify-items:center;justify-content:center;align-items:center}div#p>svg>foreignObject>section .columns-third{display:grid;grid-template-columns:75fr 25fr;gap:calc(var(--marpit-root-font-size, 1rem) * 1)}
+/* Estilos para la transparencia de título::after
+
+  <!-- _class: titlepage -->
+  # Título
+  ## Subtítulo
+  ### Autor
+  #### Fecha
+  ##### Institución
+*/div#p>svg>foreignObject>section.titlepage{background-color:var(--color-tertiary);
+    /* fonts sizes */--title-size:150%;--subtitle-size:110%;--author-size:110%;--date-size:90%;--institute-size:90%;--letter-spacing:var(--letter-spacing);
+
+  /* font weights */--title-font-weight:600;--subtitle-font-weight:600;--subtitle-color:#586e75;--subtitle-color:#93a1a1;--titlepage-color:#242d31}div#p>svg>foreignObject>section.titlepage h1{font-size:var(--title-size);font-weight:var(--title-font-weight);text-align:left;line-height:1.25;padding-right:20%}div#p>svg>foreignObject>section.titlepage h2{font-size:var(--subtitle-size);font-weight:var(--subtitle-font-weight);text-align:left;color:var(--subtitle-color);letter-spacing:var(--letter-spacing);line-height:1.2;margin-top:-0.2em;padding-bottom:95px}div#p>svg>foreignObject>section.titlepage h3,div#p>svg>foreignObject>section.titlepage h4,div#p>svg>foreignObject>section.titlepage h5{font-weight:400;color:var(--titlepage-color);line-height:0;letter-spacing:var(--letter-spacing)}div#p>svg>foreignObject>section.titlepage h3{font-size:var(--author-size)}div#p>svg>foreignObject>section.titlepage h4{font-size:var(--date-size)}div#p>svg>foreignObject>section.titlepage h5{font-size:var(--institute-size)}div#p>svg>foreignObject>section.titlepage img{background-color:var(--background-color);border-top:1px solid var(--color-primary);padding-top:0.5em}
+
+/* Omits page number in Title Page Slide */div#p>svg>foreignObject>section.titlepage footer,div#p>svg>foreignObject>section.titlepage header,div#p>svg>foreignObject>section.titlepage:after{
+  /* hide header, footer and pagination */display:none}
+
+/* Última página de las transparencias */div#p>svg>foreignObject>section.endpage{background-color:var(--color-tertiary);background-image:none;text-align:center!important;font-weight:bold!important;padding-top:auto;padding-bottom:auto}div#p>svg>foreignObject>section.endpage a,div#p>svg>foreignObject>section.endpage h1,div#p>svg>foreignObject>section.endpage h2,div#p>svg>foreignObject>section.endpage p{font-size:200%;border-bottom:none}div#p>svg>foreignObject>section.endpage footer,div#p>svg>foreignObject>section.endpage header,div#p>svg>foreignObject>section.endpage:after{display:none}
+
+/* Separador de secciones */div#p>svg>foreignObject>section.section{background-image:none;background-color:var(--color-secondary);text-align:center!important;font-weight:bold!important;color:white;padding-top:auto;padding-bottom:auto}div#p>svg>foreignObject>section.section a,div#p>svg>foreignObject>section.section h1,div#p>svg>foreignObject>section.section h2,div#p>svg>foreignObject>section.section p{color:white;font-size:200%;border-bottom:none}div#p>svg>foreignObject>section.section footer,div#p>svg>foreignObject>section.section header,div#p>svg>foreignObject>section.section:after{display:none}
+
+/* Pausa para ejemplo, ejercicio o algo así */div#p>svg>foreignObject>section.accent{background-image:none;background-color:var(--color-warning);color:var(--color-primary);padding-top:auto;padding-bottom:auto}div#p>svg>foreignObject>section.accent a,div#p>svg>foreignObject>section.accent h1,div#p>svg>foreignObject>section.accent h2,div#p>svg>foreignObject>section.accent p{text-align:center;border-bottom:none;font-weight:bold!important}div#p>svg>foreignObject>section.accent h1{font-size:200%}div#p>svg>foreignObject>section.accent h2{font-size:100%}div#p>svg>foreignObject>section.accent ol{padding-left:6em}div#p>svg>foreignObject>section.accent footer,div#p>svg>foreignObject>section.accent header,div#p>svg>foreignObject>section.accent:after{display:none}
+
+/* Cita de alguien famoso */div#p>svg>foreignObject>section.cite{background-color:var(--color-tertiary);--strong-color:rgb(182,112,27);background-image:none}div#p>svg>foreignObject>section.cite p{color:black;letter-spacing:var(--letter-spacing);font-size:150%;text-align:center;line-height:1.25em;font-family:Cambria,Cochin,Georgia,Times,"Times New Roman",serif;padding-top:auto;padding-bottom:auto;padding-left:100px;padding-right:100px}div#p>svg>foreignObject>section.cite strong{color:var(--strong-color)}
+
+/* Omits page number in Title Page Slide */div#p>svg>foreignObject>section.cite footer,div#p>svg>foreignObject>section.cite header,div#p>svg>foreignObject>section.cite:after{
+  /* hide header, footer and pagination */display:none}div#p>svg>foreignObject>section .cite-author{text-align:right}div#p>svg>foreignObject>section .cite-author:after{color:#083d77;font-size:125%;font-weight:bold;font-family:Cambria,Cochin,Georgia,Times,'Times New Roman',serif;padding-right:130px}div#p>svg>foreignObject>section section.cite-author:after{--marpit-root-font-size:125%}div#p>svg>foreignObject>section .cite-author[data-text]:after{content:" - " attr(data-text) " - "}div#p>svg>foreignObject>section .cite-author p{padding-bottom:40px}
+
+
+/******************* cool-list *****************************/div#p>svg>foreignObject>section.cool-list ol{counter-reset:li;list-style:none;padding:0}div#p>svg>foreignObject>section.cool-list li{margin-bottom:0.1em!important;margin-top:0.1em!important}div#p>svg>foreignObject>section.cool-list ol>li>em,div#p>svg>foreignObject>section.cool-list>ol>li>a{position:relative;display:block;padding:0.4em 0.4em 0.4em 2em;margin:0.5em 0.5em 0.5em 1em;background:#ddd;color:#444;text-decoration:none;border-radius:0.3em;transition:all 0.3s ease-out;font-style:normal}div#p>svg>foreignObject>section.cool-list ol>li>em:before,div#p>svg>foreignObject>section.cool-list>ol>li>a:before{content:counter(li);counter-increment:li;position:absolute;left:-1.3em;top:50%;margin-top:-1.3em;background:var(--color-secondary);height:2em;width:2em;line-height:2em;border:0.3em solid #fff;text-align:center;font-weight:normal;border-radius:2em;transition:all 0.3s ease-out;color:white}div#p>svg>foreignObject>section.cool-list>ol>li>a:hover,div#p>svg>foreignObject>section.cool-list>ol>li>em:hover{background:#eee;font-weight:bolder}
+
+/* Lists inside lists */div#p>svg>foreignObject>section.cool-list>ol ol{margin:0 0 0 2em;
+  /* Add some left margin for inner lists */font-size:75%;counter-reset:li2
+  /* Initiate a counter */}div#p>svg>foreignObject>section.cool-list>ol ol>li>a:before,div#p>svg>foreignObject>section.cool-list>ol ol>li>em:before{content:counter(li2);counter-increment:li2}div#p>svg>foreignObject>section.cool-list>ol>li>ul{list-style-type:disc;margin:0 0 0 1em;font-size:75%}div#p>svg>foreignObject>section.cool-list>ol ol>li>em{background:#efefef}
+
+
+/************************* BIBLIO *****************************/div#p>svg>foreignObject>section.biblio{background-color:var(--color-tertiary);background-image:none}div#p>svg>foreignObject>section.biblio p{color:var(--color-primary);font-size:90%}div#p>svg>foreignObject>section.biblio h1{color:var(--color-primary);border-bottom:1px solid var(--color-primary)}div#p>svg>foreignObject>section.biblio strong{color:var(--color-primary)}div#p>svg>foreignObject>section.biblio a{font-weight:bold;color:var(--color-primary)}div#p>svg>foreignObject>section.biblio li{color:var(--color-primary)}div#p>svg>foreignObject>section.biblio footer,div#p>svg>foreignObject>section.biblio header,div#p>svg>foreignObject>section.biblio:after{display:none}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]{columns:initial!important;display:block!important;padding:0!important}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]:after,div#p>svg>foreignObject>section[data-marpit-advanced-background=background]:before,div#p>svg>foreignObject>section[data-marpit-advanced-background=content]:after,div#p>svg>foreignObject>section[data-marpit-advanced-background=content]:before{display:none!important}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]>div[data-marpit-advanced-background-container]{all:initial;display:flex;flex-direction:row;height:100%;overflow:hidden;width:100%}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]>div[data-marpit-advanced-background-container][data-marpit-advanced-background-direction=vertical]{flex-direction:column}div#p>svg>foreignObject>section[data-marpit-advanced-background=background][data-marpit-advanced-background-split]>div[data-marpit-advanced-background-container]{width:var(--marpit-advanced-background-split,50%)}div#p>svg>foreignObject>section[data-marpit-advanced-background=background][data-marpit-advanced-background-split=right]>div[data-marpit-advanced-background-container]{margin-left:calc(100% - var(--marpit-advanced-background-split, 50%))}div#p>svg>foreignObject>section[data-marpit-advanced-background=background]>div[data-marpit-advanced-background-container]>figure{all:initial;background-position:center;background-repeat:no-repeat;background-size:cover;flex:auto;margin:0}div#p>svg>foreignObject>section[data-marpit-advanced-background=content],div#p>svg>foreignObject>section[data-marpit-advanced-background=pseudo]{background:transparent!important}div#p>svg>foreignObject>section[data-marpit-advanced-background=pseudo],div#p>svg[data-marpit-svg]>foreignObject[data-marpit-advanced-background=pseudo]{pointer-events:none!important}div#p>svg>foreignObject>section[data-marpit-advanced-background-split]{width:100%;height:100%}</style></head><body><div class="bespoke-marp-osc"><button data-bespoke-marp-osc="prev" tabindex="-1" title="Previous slide">Previous slide</button><span data-bespoke-marp-osc="page"></span><button data-bespoke-marp-osc="next" tabindex="-1" title="Next slide">Next slide</button><button data-bespoke-marp-osc="fullscreen" tabindex="-1" title="Toggle fullscreen (f)">Toggle fullscreen</button><button data-bespoke-marp-osc="presenter" tabindex="-1" title="Open presenter view (p)">Open presenter view</button></div><div id="p"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="1" data-paginate="true" data-class="titlepage" data-theme="etsisi" class="titlepage" data-marpit-pagination="1" data-marpit-pagination-total="65" style="--paginate:true;--class:titlepage;--theme:etsisi;">
+<h1>Programación de softbots</h1>
+<h2>Robótica - Grado en Ingeniería de Computadores</h2>
+<h3>Departamento de Sistemas Informáticos</h3>
+<h4>E.T.S.I. de Sistemas Informáticos - Universidad Politécnica de Madrid</h4>
+<h5>22 de octubre de 2023</h5>
+<p><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-informational.svg" alt="" style="height:30px;" /></a></p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="2" data-paginate="true" data-class="section" data-theme="etsisi" class="section" data-marpit-pagination="2" data-marpit-pagination-total="65" style="--paginate:true;--class:section;--theme:etsisi;">
+<h1>Internet y el protocolo HTTP</h1>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="3" data-paginate="true" data-theme="etsisi" data-marpit-pagination="3" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
+<h1>¿Qué es el <i>Hypertext Transfer Protocol</i> (HTTP)?</h1>
+<p>Diseñado en 1990, es la base de la comunicación de datos en la World Wide Web</p>
+<ul>
+<li>Protocolo a nivel de aplicación, sobre TCP/IP, que sigue el modelo cliente-servidor</li>
+<li>Su puerto estándar de comunicación asignado es el 80</li>
+<li>En la actualidad trabajamos con la versión HTTP/2<sup>1</sup> (<a href="https://datatracker.ietf.org/doc/html/rfc7540">RFC7540</a>)</li>
+<li>Suficientemente abierto para no impedir el<br />
+desarrollo de aplicaciones de terceros
+<ul>
+<li>Por ejemplo, agentes de información</li>
+</ul>
+</li>
+</ul>
+<p>HTTP se utiliza principalmente para transmitir recursos</p>
+<ul>
+<li>Recurso: fragmento de información identificable mediante una URL (de ahí la R)</li>
+<li>El tipo más común de recurso es un archivo</li>
+<li>También puede ser una salida generada dinámicamente (e.g. script CGI)</li>
+</ul>
+<blockquote>
+<p><sup>1</sup> En abril de 2016, el tráfico servido por la compañía KeyCDN superó los dos tercios en HTTP/2 frente a HTTP/1.1, la versión que este reemplazaba <a href="https://www.keycdn.com/blog/http2-statistics">https://www.keycdn.com/blog/http2-statistics</a>.</p>
+</blockquote>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="4" data-paginate="true" data-theme="etsisi" data-marpit-pagination="4" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
+<h1><i>Uniform Resource Locator</i> (URL)</h1>
+<p>Es la forma de identificar recursos en la Web, y tiene la siguiente estructura:</p>
+<pre><code class="language-text"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>protocolo://servidor:puerto/path/hasta/el/recurso?query=con&amp;algun=parametro
+</span></span></foreignObject></svg></code></pre>
+<p>Por ejemplo:</p>
+<pre><code class="language-text"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>https://www.google.com/search?q=boniato+al+horno&amp;sclient=gws-wiz-serp
+</span></span></foreignObject></svg></code></pre>
+<p>Si no se especifica, se usa el puerto por defecto del protocolo (http: 80, https: 443)</p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="5" data-paginate="true" data-theme="etsisi" data-marpit-pagination="5" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
+<h1>Modelo cliente-servidor y el protocolo HTTP</h1>
+<p>Es un modelo de comunicación donde hay dos entidades:</p>
+<ul>
+<li>Cliente: solicita recursos al servidor</li>
+<li>Servidor: proporciona los recursos solicitados</li>
+</ul>
+<p>Una sesión HTTP se inicia cuando el cliente envía una petición al servidor</p>
+<ol>
+<li>El cliente establece una conexion TCP con el servidor</li>
+<li>El cliente envía una petición (<strong><i>request</i></strong>) al servidor, y queda a la espera de la respuesta
+<ul>
+<li>Esta petición obedece a uno de los <strong>métodos</strong> definidos para el protocolo HTTP</li>
+</ul>
+</li>
+<li>El servidor procesa la petición y envía una respuesta (<strong><i>response</i></strong>) al cliente
+<ul>
+<li>Incluyendo, entre otros, un <strong>código de estado</strong></li>
+</ul>
+</li>
+</ol>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="6" data-paginate="true" data-theme="etsisi" data-marpit-pagination="6" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
+<h1>Mensajes en HTTP</h1>
+<p>Toda comunicación HTTP entre dispositivos se basa en dos tipos de mensaje</p>
+<ul>
+<li><strong><i>Request</i></strong>: mensaje enviado por el cliente al servidor</li>
+<li><strong><i>Response</i></strong>: mensaje enviado por el servidor al cliente</li>
+</ul>
+<p>Ambos mensajes tienen caracterísiticas comunes y diferencias:</p>
+<ul>
+<li>Ambos poseen cabeceras con metainformación (<i>headers</i>)</li>
+<li>Ambos pueden poseer un cuerpo adicional donde se envían datos</li>
+<li>La request indica el método a utilizar y el recurso al que se quiere acceder</li>
+<li>La response indica el código de estado de la respuesta</li>
+</ul>
+<p>La estructura de mensajes difiere bastante entre los protocolos 1.1 y 2.0 de HTTP</p>
+<ul>
+<li>Lo bueno es que con las bibliotecas de Python nos abstraemos de ello</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="7" data-paginate="true" data-theme="etsisi" data-marpit-pagination="7" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
+<h1>Métodos definidos para el protocolo HTTP</h1>
+<ul>
+<li><strong>GET</strong>: solicita un recurso al servidor</li>
+<li><strong>HEAD</strong>: solicita los metadatos de un recurso al servidor</li>
+<li><strong>POST</strong>: envía datos al servidor</li>
+<li><strong>PUT</strong>: envía un recurso al servidor</li>
+<li><strong>PATCH</strong>: envía una actualización parcial de un recurso al servidor</li>
+<li><strong>DELETE</strong>: elimina un recurso del servidor</li>
+<li><strong>CONNECT</strong>: establece un túnel hacia el servidor identificado por el recurso</li>
+<li><strong>OPTIONS</strong>: solicita los métodos que el servidor soporta para un recurso</li>
+<li><strong>TRACE</strong>: realiza una prueba de bucle de retorno de mensaje al servidor</li>
+</ul>
+<p>Esta es la teoría, porque luego muchas se implementan como se quiere</p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="8" data-paginate="true" data-theme="etsisi" data-marpit-pagination="8" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
+<h1>Códigos de estado (<i>status codes</i>)</h1>
+<p>Los códigos de estado son números de tres dígitos que indican el estado de la respuesta</p>
+<ul>
+<li>1xx: información</li>
+<li>2xx: éxito</li>
+<li>3xx: redirección</li>
+<li>4xx: error del cliente</li>
+<li>5xx: error del servidor</li>
+</ul>
+<p>Al igual que los métodos, los códigos de estado son estándar, pero no obligatorios</p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="9" data-paginate="true" data-class="section" data-theme="etsisi" class="section" data-marpit-pagination="9" data-marpit-pagination-total="65" style="--paginate:true;--class:section;--theme:etsisi;">
+<p>Servicios web y REST</p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-paginate="true" data-theme="etsisi" data-marpit-pagination="10" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
+<h1>Servicios web</h1>
+<p>Un servicio web es un conjunto de protocolos y estándares que permiten la comunicación entre aplicaciones</p>
+<ul>
+<li>Se basan en estándares abiertos que funcionan sobre el protocolo HTTP</li>
+<li>Su origen proviene de estándares de ejecución remota de código de los 90</li>
+<li>Un conjunto de servicios web con propósito común se denomina API (<i>Application Programming Interface</i>)</li>
+<li>Pueden estar documentados también para máquinas usando WSDL (<i>Web Services Description Language</i>)</li>
+</ul>
+<p>En la actualidad, estos estándares están en desuso por el auge de la web</p>
+<ul>
+<li>La transmisión de datos es a través del puerto 80 o 443 (adios <i>firewalls</i>)</li>
+<li>Protocolos que funcionan sobre un estándar ya probado (SOAP)</li>
+<li>O simplemente conjuntos de pautas para hacer la comunicación más ligera (REST)</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11" data-paginate="true" data-theme="etsisi" data-marpit-pagination="11" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
+<h1>Acerca de REST</h1>
+<p><i>Representational State Transfer</i> (REST) es un estilo de arquitectura de software</p>
+<ul>
+<li>No es un protocolo, es un conjunto de principios para la creación de servicios web</li>
+</ul>
+<p>Sus principios arquitectónicos son:</p>
+<ul>
+<li><strong>Interfaz uniforme</strong>: La información se envía en formato estándar (XML, JSON, etc.)</li>
+<li><strong>Sin estado</strong>: El servidor completa solicitudes independientes (es inherente a HTTP)</li>
+<li><strong>Distribuido</strong>: Permite que varios servidores trabajen juntos</li>
+<li><strong>Almacenamiento en caché</strong>: Ayuda a mejorar el rendimiento</li>
+<li><strong>Código bajo demanda</strong>: El servidor puede enviar código al cliente para que lo ejecute</li>
+</ul>
+<p>Las API que siguen la arquitectura de REST se llaman <strong>API RESTful</strong></p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-paginate="true" data-theme="etsisi" data-marpit-pagination="12" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
+<h1>API RESTful</h1>
+<p>Son aquellos <strong>servicios web que implementan una arquitectura REST</strong></p>
+<p>Requieren que las peticiones contengan los siguientes <strong>elementos principales</strong>:</p>
+<ul>
+<li><strong>URL</strong>: La ruta hacia el recurso o servicio</li>
+<li><strong>Método</strong>: La acción que se quiere realizar sobre el servicio, que suelen ser:
+<ul>
+<li><code>GET</code>: Para obtener listas (e.g. <code>GET /games</code>) o elementos (e.g. <code>GET /game/1</code>)</li>
+<li><code>POST</code>: Para enviar información o crear elementos (e.g. <code>POST /game</code>)</li>
+<li><code>PUT</code> o <code>PATCH</code>: Para actualizar elementos (e.g. <code>PUT /game/1</code>)</li>
+<li><code>DELETE</code>: Para eliminar elementos (e.g. <code>DELETE /game/1</code>)</li>
+</ul>
+</li>
+<li><strong>Cuerpo</strong>: La información enviada al servidor (para peticiones <code>POST</code>, <code>PUT</code> o <code>PATCH</code>)</li>
+<li><strong>Cabeceras</strong>: Información adicional de la petición, (e.g. datos de autenticación)</li>
+</ul>
+<p>Es un estándar muy usado en la actualidad, pero no es obligatorio</p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13" data-paginate="true" data-class="section" data-theme="etsisi" class="section" data-marpit-pagination="13" data-marpit-pagination-total="65" style="--paginate:true;--class:section;--theme:etsisi;">
+<h1><i>Web scraping</i></h1>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-paginate="true" data-theme="etsisi" data-marpit-pagination="14" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
+<h1>¿Qué es el <i>web scraping</i>?</h1>
+<p>Técnica para <strong>extraer información de sitios web</strong> mediante programas de software</p>
+<ul>
+<li>Es la única opción si un sitio no ofrece una API (o si sí lo hace, pero es insuficiente)</li>
+</ul>
+<p>Parece complicado, pero en realidad es muy sencillo, basado en dos procesos:</p>
+<ol>
+<li>Navegación por los sitios web (estos procesos se denominan <em><i>spiders</i></em> o <em><i>crawlers</i></em>)</li>
+<li>Extracción de datos de sitio web (<em><i>scraping</em></i>)</li>
+</ol>
+<p>Es muy útil, pero tiene ciertos <strong>inconvenientes</strong></p>
+<ul>
+<li>Es una <strong>técnica más costosa</strong> que usar una API</li>
+<li>Genera <strong>más tráfico</strong> entre cliente y servidor</li>
+<li>Es <strong>sensible a cambios</strong> en la estructura de las páginas web</li>
+<li>Hay que respetar las <strong>condiciones</strong> (<strong>legales o no</strong>) de uso de los sitios web</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-paginate="true" data-theme="etsisi" data-marpit-pagination="15" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
+<h1>¿Para qué se utiliza el <em>web scraping</em>?</h1>
+<p>Algunos de los dominios de aplicación del <em>web scraping</em> son:</p>
+<ul>
+<li><strong>Automatización del negocio</strong>, evitando tareas manuales tediosas como recopilar información de diversas fuentes</li>
+<li><strong>Estudios de mercado</strong>, dado que algunos datos de mercado son públicos</li>
+<li><strong>Generación de <i>leads</i></strong>, o lo que es lo mismo, listas de clientes potenciales</li>
+<li><strong>Seguimiento de precios</strong>, como por ejemplo <a href="https://camelcamelcamel.com/">CamelCamelCamel</a></li>
+<li><strong>Noticias y contenidos</strong>, agregándolos para una consulta más cómoda</li>
+<li><strong>Monitorización de la marca</strong>, para saber qué se dice de ella en Internet</li>
+<li><strong>Mercado inmobiliario</strong>, para saber qué se vende y a qué precio</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="16" data-paginate="true" data-theme="etsisi" data-marpit-pagination="16" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
+<h1>Protección contra el <em>web scraping</em></h1>
+<p>Es lógico que algunas páginas web protejan sus datos contra el web scraping</p>
+<ul>
+<li>No es infalible, casi todo comportamiento en un navegador es replicable</li>
+<li>Nos queda el consuelo que al menos dificultan la tarea</li>
+</ul>
+<p>Existen varias técnicas para protegerse contra el web scraping, entre ellas:</p>
+<ul>
+<li><strong>Análisis del comportamiento del usuario</strong>: Técnicas orientadas a detectar si el usuario es un humano o un robot en función de su comportamiento</li>
+<li><strong>Bloqueo de IP</strong>: Bloquear IP que acceden a la página con demasiada frecuencia</li>
+<li><strong>Captcha</strong><sup>2</sup>: Imagen con texto para demostrar que quien accede es humano<sup>3</sup></li>
+<li><strong>Fichero <code>robots.txt</code></strong>: Archivo que indica a los robots qué rutas no deben visitar</li>
+<li><strong>HoneyPot</strong>: Sitio falso para la detección de robots</li>
+</ul>
+<blockquote>
+<p><sup>2</sup> Acrónimo para <em><strong>C</strong>ompletely <strong>A</strong>utomated <strong>P</strong>ublic <strong>T</strong>uring test to tell <strong>C</strong>omputers and <strong>H</strong>umans <strong>A</strong>part</em>.<br />
+<sup>3</sup> Echad un ojo a <a href="https://www.zenrows.com/">https://www.zenrows.com/</a>; ¿alguien se anima a hacer un TFG del tema?</p>
+</blockquote>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="17" data-paginate="true" data-theme="etsisi" data-marpit-pagination="17" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
+<h1>Pero... ¿es legal o no?<sup>4</sup></h1>
+<p>Anda en un limbo gris entre la legalidad y la no legalidad</p>
+<ul>
+<li>
+<p>Las condiciones de uso de un sitio específico pueden prohibirlo</p>
+</li>
+<li>
+<p>Pero para que la extracción sea ilegal, debería ir en contra de una ley ya existente</p>
+</li>
+<li>
+<p>Sí podría haber problemas en caso de que se vulnerase la LGPD o la RGPD</p>
+</li>
+</ul>
+<p>Cuando se trata de ONG defensoras del acceso abierto, la cosa es más divertida</p>
+<ul>
+<li>¿Cómo de ilegal es <a href="https://archive.org">https://archive.org</a>?</li>
+<li>¿Qué pasa con la investigación peridística cómo <a href="https://www.reuters.com/investigates/adoption/#article/part1">Reuters</a>, <a href="https://revealnews.org/topic/to-protect-and-slur/">Reveal</a> o <a href="https://www.thetrace.org/2020/01/armslist-unlicensed-gun-sales-engaged-in-the-business/">The Trace</a>?</li>
+</ul>
+<p>En España, la Ley de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE) <strong>no prohíbe explícitamente el web scraping</strong></p>
+<blockquote>
+<p><sup>4</sup> <em>I am not a lawyer</em> (IANAL), así que todo lo que digamos aquí hay que cogerlo con pinzas.</p>
+</blockquote>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-paginate="true" data-class="section" data-theme="etsisi" class="section" data-marpit-pagination="18" data-marpit-pagination-total="65" style="--paginate:true;--class:section;--theme:etsisi;">
+<h1>Creación de <i>softbots</i> con Python</h1>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="19" data-paginate="true" data-theme="etsisi" data-marpit-pagination="19" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
+<h1>La biblioteca <code>urllib</code></h1>
+<p>Es la encargada de trabajar con URLs y de realizar peticiones HTTP</p>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">from</span> urllib.request <span class="hljs-keyword">import</span> urlopen, Request
+
+request = Request(<span class="hljs-string">&#x27;https://www.python.org/&#x27;</span>)
+<span class="hljs-keyword">with</span> urlopen(request) <span class="hljs-keyword">as</span> response:
+    received_bytes = response.read()
+content = received_bytes.decode()
+<span class="hljs-built_in">print</span>(content[:<span class="hljs-number">72</span>])
+</span></span></foreignObject></svg></code></pre>
+<p>Este ejemplo realiza una petición <code>GET</code> al recurso indicado y devuelve su contenido</p>
+<ul>
+<li>Forma parte de la biblioteca estándar, por lo que no es necesario instalar nada</li>
+<li>Además de recuperar datos, incluye funciones para gestionar cookies y cabeceras</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-paginate="true" data-theme="etsisi" data-marpit-pagination="20" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
+<h1>Parámetros por <code>GET</code></h1>
+<p>En el ejemplo anterior, la URL no incluía ningún parámetro</p>
+<ul>
+<li>En el caso de una petición <code>GET</code>, estos se añaden a la URL</li>
+<li>Sin embargo, hay que tener cuidado con la codificación de los caracteres especiales</li>
+</ul>
+<p>Para ello, podemos usar la función <code>urlencode</code> de <code>urllib.parse</code></p>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">from</span> urllib.parse <span class="hljs-keyword">import</span> urlencode
+
+params = urlencode({<span class="hljs-string">&#x27;q&#x27;</span>: <span class="hljs-string">&#x27;python&#x27;</span>})
+url = <span class="hljs-string">&#x27;https://www.google.com/search?&#x27;</span> + params
+<span class="hljs-built_in">print</span>(url)
+</span></span></foreignObject></svg></code></pre>
+<p>Así nos aseguramos de que todo carácter especial es codificado correctamente</p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21" data-paginate="true" data-theme="etsisi" data-marpit-pagination="21" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
+<h1>Datos por <code>POST</code></h1>
+<p>Una petición de tipo POST envía los parámetros en el cuerpo de la petición</p>
+<ul>
+<li>No tiene sentido mandar parámetros porque no tendremos acceso a la <em>query string</em></li>
+<li>POST es más flexible que GET, ya que permite enviar datos binarios (e.g. ficheros)</li>
+</ul>
+<p>Para enviar datos por POST, basta con crear la <em>request</em> con datos:</p>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>data = urlencode({<span class="hljs-string">&#x27;key&#x27;</span>: <span class="hljs-string">&#x27;value&#x27;</span>}).encode()
+request = Request(<span class="hljs-string">&#x27;https://httpbin.org/anything&#x27;</span>, data=data)
+<span class="hljs-keyword">with</span> urlopen(request) <span class="hljs-keyword">as</span> response:
+    <span class="hljs-built_in">print</span>(response.read().decode())
+</span></span></foreignObject></svg></code></pre>
+<p>Esto no funciona si el cuerpo de datos es vacío</p>
+<ul>
+<li>Se puede solucionar añadiendo el argumento <code>method='POST'</code> al crear la <em>request</em></li>
+<li>De hecho con este argumento se especifica el método de la petición</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="22" data-paginate="true" data-theme="etsisi" data-marpit-pagination="22" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
+<h1>Formularios y <code>POST</code></h1>
+<p>Los formularios HTML se envían por <code>POST</code> por defecto</p>
+<ul>
+<li>Cada campo del formulario se envía como un parámetro diferente</li>
+</ul>
+<p>Veamos los tipos más comunes:</p>
+<ul>
+<li><code>text</code>, <code>password</code>, <code>hidden</code>, <code>textarea</code>, <code>select</code>, <code>radio</code>: Se envía el <em>name</em>/<em>value</em> del campo</li>
+<li><code>checkbox</code>: Se envían tantos <em>name</em>/<em>value</em> como checkboxes estén marcados</li>
+</ul>
+<p>Los formularios se pueden enviar también por <code>GET</code></p>
+<ul>
+<li>En este caso, los parámetros se añaden a la URL</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="23" data-paginate="true" data-theme="etsisi" data-marpit-pagination="23" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
+<h1>¿Y si queremos enviar ficheros?</h1>
+<p>De hecho, es una de las características de <code>POST</code> frente a <code>GET</code></p>
+<ul>
+<li>Es similar al caso anterior, pero enviando el contenido de un fichero</li>
+<li>Es conveniente añadir ciertas cabeceras para indicar el tamaño y el tipo de contenido</li>
+</ul>
+<p>Por ejemplo, para enviar una imagen PNG:</p>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">import</span> os
+
+image_path = <span class="hljs-string">&#x27;images/python.png&#x27;</span>
+image_size = os.path.getsize(image_path)
+image_data = <span class="hljs-built_in">open</span>(image_path, <span class="hljs-string">&#x27;rb&#x27;</span>)
+request = Request(<span class="hljs-string">&#x27;https://httpbin.org/anything&#x27;</span>, data=image_data)
+request.add_header(<span class="hljs-string">&#x27;Content-Length&#x27;</span>, image_size)
+request.add_header(<span class="hljs-string">&#x27;Content-Type&#x27;</span>, <span class="hljs-string">&#x27;image/png&#x27;</span>)
+<span class="hljs-keyword">with</span> urlopen(request) <span class="hljs-keyword">as</span> response:
+    <span class="hljs-built_in">print</span>(response.read().decode())
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="24" data-paginate="true" data-theme="etsisi" data-marpit-pagination="24" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
+<h1>¿Cómo leemos las cabeceras de una respuesta?</h1>
+<p>Toda petición conlleva una respuesta con cabeceras y (a veces) datos</p>
+<ul>
+<li>La biblioteca <code>urllib</code> las comprime en un objeto <code>HTTPMessage</code></li>
+</ul>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>request = Request(<span class="hljs-string">&#x27;https://www.python.org/&#x27;</span>)
+<span class="hljs-keyword">with</span> urlopen(request) <span class="hljs-keyword">as</span> response:
+    <span class="hljs-built_in">print</span>(response.headers)
+</span></span></foreignObject></svg></code></pre>
+<p>Este objeto se comporta como un diccionario</p>
+<ul>
+<li>Con el método <code>get</code> podemos obtener el valor de la cabecera indicada</li>
+</ul>
+<p>Veamos algunas cabeceras útiles</p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="25" data-paginate="true" data-theme="etsisi" data-marpit-pagination="25" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
+<h1>Cabecera <i>Accept</i></h1>
+<p>Indica al servidor web qué formato de datos entiende cliente</p>
+<ul>
+<li>Por ejemplo, si el cliente entiende HTML, JSON, XML, etc.</li>
+</ul>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>request = Request(<span class="hljs-string">&#x27;https://httpbin.org/anything&#x27;</span>)
+request.add_header(<span class="hljs-string">&#x27;Accept&#x27;</span>, <span class="hljs-string">&#x27;application/json;q=0.9,*/*;q=0.8&#x27;</span>)
+</span></span></foreignObject></svg></code></pre>
+<p>El factor de calidad <code>q</code> indica la preferencia del cliente</p>
+<ul>
+<li>Se utiliza en las cabeceras que aceptan varios valores</li>
+</ul>
+<p>Es importante que la cadena sea similar a la ofrecida por los navegadores</p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="26" data-paginate="true" data-theme="etsisi" data-marpit-pagination="26" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
+<h1>Cabecera <i>Accept-Encoding</i></h1>
+<p>Notifica al servidor web qué algoritmo de compresión utilizar para gestionar la petición</p>
+<ul>
+<li>Por ejemplo, si el cliente entiende <code>gzip</code>, <code>deflate</code>, <code>br</code>, etc.</li>
+<li>Dicho de otro modo, si el cliente y el servidor pueden comprimir la información</li>
+</ul>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>request = Request(<span class="hljs-string">&#x27;https://httpbin.org/anything&#x27;</span>)
+request.add_header(<span class="hljs-string">&#x27;Accept-Encoding&#x27;</span>, <span class="hljs-string">&#x27;gzip, deflate, br&#x27;</span>)
+</span></span></foreignObject></svg></code></pre>
+<p>Esta cabecera es especialmente útil para reducir el tamaño de las respuestas</p>
+<ul>
+<li>Menos tiempo de espera y menos ancho de banda, win-win para cliente y servidor</li>
+</ul>
+<p>El <em>encoding</em> <code>br</code> (Brotli) se usa para identificar scrapers, pero <code>urllib</code> ya lo soporta</p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="27" data-paginate="true" data-theme="etsisi" data-marpit-pagination="27" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
+<h1>Cabecera <i>Accept-Language</i></h1>
+<p>Indica al servidor qué idiomas prefiere el cliente</p>
+<ul>
+<li>Se puede especificar un único idioma o una lista de idiomas</li>
+<li>Entra en juego cuando los servidores web no pueden identificar el idioma preferido</li>
+</ul>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>request = Request(<span class="hljs-string">&#x27;https://httpbin.org/anything&#x27;</span>)
+request.add_header(<span class="hljs-string">&#x27;Accept-Language&#x27;</span>, <span class="hljs-string">&#x27;en-US, en;q=0.9, es;q=0.8&#x27;</span>)
+</span></span></foreignObject></svg></code></pre>
+<p>Es un factor más a la hora de detectar comportamientos no humanos</p>
+<ul>
+<li>Puede ser útil hacer que los lenguajes se ajusten a la ubicación IP del cliente</li>
+<li>También es útil ajustar los valores de <code>q</code> para no destacar frente al resto de tráfico</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="28" data-paginate="true" data-theme="etsisi" data-marpit-pagination="28" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
+<h1>Cabecera <i>User-Agent</i></h1>
+<p>El servidor utiliza esta información para identificar y adaptar el contenido al cliente</p>
+<ul>
+<li>Por ejemplo, si el cliente es un navegador web, un teléfono móvil, un reproductor multimedia, etc.</li>
+</ul>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>request = Request(<span class="hljs-string">&#x27;https://httpbin.org/anything&#x27;</span>)
+request.add_header(<span class="hljs-string">&#x27;User-Agent&#x27;</span>, <span class="hljs-string">&#x27;Mozilla/5.0 (X11; Ubuntu; Linux x86_64 ...&#x27;</span>)
+</span></span></foreignObject></svg></code></pre>
+<p>Suelen seguir el formato:</p>
+<pre><code class="language-text"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>(&lt;navegador&gt;) (&lt;sistema&gt;) &lt;plataforma&gt; (&lt;detalles plataforma&gt;) &lt;extensiones&gt;
+</span></span></foreignObject></svg></code></pre>
+<p>Es importante porque ayuda a enmascarar el scraper como un navegador web</p>
+<ul>
+<li>Si el agente de usuario está mal formado, lo más normal es que el servidor lo bloquee</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="29" data-paginate="true" data-theme="etsisi" data-marpit-pagination="29" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
+<h1>Cabecera <i>Referer</i></h1>
+<p>Indica la URL de la página desde la que se ha hecho la petición</p>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>request = Request(<span class="hljs-string">&#x27;https://httpbin.org/anything&#x27;</span>)
+request.add_header(<span class="hljs-string">&#x27;Referer&#x27;</span>, <span class="hljs-string">&#x27;https://www.google.com/&#x27;</span>)
+</span></span></foreignObject></svg></code></pre>
+<p>Esta cabecera es importante para identificar patrones de uso en usuarios</p>
+<ul>
+<li>Y los usuarios no suelen entrar en páginas web de forma aleatoria</li>
+<li>Suelen venir de buscadores web, redes sociales, etc.</li>
+</ul>
+<p>Es interesante especificar esta cabecera para que el agente parezca más &quot;humano&quot;</p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="30" data-paginate="true" data-theme="etsisi" data-marpit-pagination="30" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
+<h1>Forma alternativa de establecer cabeceras</h1>
+<p>El posible especificar un diccionario con las cabeceras al construir la <em>request</em>:</p>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>request = Request(url, data=<span class="hljs-literal">None</span>, headers={
+    <span class="hljs-string">&#x27;Accept&#x27;</span>: <span class="hljs-string">&#x27;application/json;q=0.9,*/*;q=0.8&#x27;</span>,
+    <span class="hljs-string">&#x27;Accept-Encoding&#x27;</span>: <span class="hljs-string">&#x27;gzip, deflate&#x27;</span>,
+    <span class="hljs-string">&#x27;Accept-Language&#x27;</span>: <span class="hljs-string">&#x27;en-US, en;q=0.9, es;q=0.8&#x27;</span>
+    <span class="hljs-comment"># ...</span>
+  }
+)
+</span></span></foreignObject></svg></code></pre>
+<p>No es ni mejor ni peor, es simplemente otra forma de hacerlo</p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="31" data-paginate="true" data-class="section" data-theme="etsisi" class="section" data-marpit-pagination="31" data-marpit-pagination-total="65" style="--paginate:true;--class:section;--theme:etsisi;">
+<h1>Biblioteca <code>requests</code></h1>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="32" data-paginate="true" data-theme="etsisi" data-marpit-pagination="32" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
+<h1>Sobre esta biblioteca</h1>
+<p>Simplifica el uso de HTTP frente a urllib, destacando:</p>
+<ul>
+<li>Facilidad de uso de <em>cookies</em> para mantener sesiones</li>
+<li>Codificación automática del contenido de las respuestas</li>
+<li>Codificación automática de URL internacionalizadas y datos POST</li>
+<li>Facilidad en el uso de <em>proxies</em> y <em>certificados SSL</em></li>
+<li>Soporte para <em>streaming</em> de datos</li>
+<li>Implementación automática de conexiones persistentes (<em>keep-alive</em>)</li>
+</ul>
+<p>Eso sí, es una biblioteca de terceros, así que habrá que instalarla aparte:</p>
+<pre><code class="language-bash"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>pip install requests
+</span></span></foreignObject></svg></code></pre>
+<p>Documentación oficial en <a href="https://requests.readthedocs.io">https://requests.readthedocs.io</a></p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="33" data-paginate="true" data-theme="etsisi" data-marpit-pagination="33" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
+<h1>¿Cómo realizo una petición HTTP?</h1>
+<p>Tan sencillo como usar la función <code>get</code> de la biblioteca:</p>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>response = requests.get(<span class="hljs-string">&#x27;https://httpbin.org/anything&#x27;</span>)
+</span></span></foreignObject></svg></code></pre>
+<p>De hecho, cada método tiene su propia función:</p>
+<ul>
+<li><code>get()</code>, <code>post()</code>, <code>put()</code>, <code>patch()</code>, <code>delete()</code>, <code>head()</code>, <code>options()</code></li>
+</ul>
+<p>Enviar parámetros también es sencillo, basta con usar el diccionario <code>params</code>:</p>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>response = requests.get(<span class="hljs-string">&#x27;https://httpbin.org/anything&#x27;</span>, params={<span class="hljs-string">&#x27;p1&#x27;</span>:<span class="hljs-string">&#x27;v1&#x27;</span>,<span class="hljs-string">&#x27;p2&#x27;</span>:<span class="hljs-string">&#x27;v2&#x27;</span>})
+</span></span></foreignObject></svg></code></pre>
+<p>Y establecer un tiempo máximo de respuesta con el parámetro <code>timeout</code>:</p>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>response = requests.get(<span class="hljs-string">&#x27;https://httpbin.org/anything&#x27;</span>, timeout=<span class="hljs-number">5</span>)
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="34" data-paginate="true" data-theme="etsisi" data-marpit-pagination="34" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
+<h1>Envío de datos en peticiones POST/PUT/PATCH</h1>
+<p>En este caso, habría que utilizar el parámetro <code>data</code>:</p>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>response = requests.post(<span class="hljs-string">&#x27;https://httpbin.org/anything&#x27;</span>, data={
+  <span class="hljs-string">&#x27;param1&#x27;</span>: <span class="hljs-string">&#x27;val1&#x27;</span>,
+  <span class="hljs-string">&#x27;param2&#x27;</span>: <span class="hljs-string">&#x27;val2&#x27;</span>
+})
+response.text
+</span></span></foreignObject></svg></code></pre>
+<p>No es necesario codificar los datos, la biblioteca lo hace por nosotros</p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="35" data-paginate="true" data-theme="etsisi" data-marpit-pagination="35" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
+<h1>¿Y si necesitamos especificar el tipo de contenido?</h1>
+<p>En ese caso jugamos con las cabeceras:</p>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>response = requests.post(<span class="hljs-string">&#x27;https://httpbin.org/anything&#x27;</span>, data={
+    <span class="hljs-string">&#x27;param1&#x27;</span>: <span class="hljs-string">&#x27;val1&#x27;</span>,
+    <span class="hljs-string">&#x27;param2&#x27;</span>: <span class="hljs-string">&#x27;val2&#x27;</span>
+}, headers={<span class="hljs-string">&#x27;Content-Type&#x27;</span>: <span class="hljs-string">&#x27;text/xml&#x27;</span>})
+response.text
+</span></span></foreignObject></svg></code></pre>
+<p>¡E incluso con los datos!</p>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>response = requests.post(<span class="hljs-string">&#x27;https://httpbin.org/anything&#x27;</span>,
+    data=<span class="hljs-string">&#x27;&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;soap:Envelope...&#x27;</span>,
+    headers={<span class="hljs-string">&#x27;Content-Type&#x27;</span>: <span class="hljs-string">&#x27;text/xml&#x27;</span>})
+response.text
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="36" data-paginate="true" data-theme="etsisi" data-marpit-pagination="36" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
+<h1>¿Y si necesitamos enviar un fichero?</h1>
+<p>Pues nada, para eso tenemos el parámetro <code>files</code>:</p>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>response = requests.post(<span class="hljs-string">&#x27;https://httpbin.org/anything&#x27;</span>, files={
+  <span class="hljs-string">&#x27;file1&#x27;</span>: <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;file1.txt&#x27;</span>, <span class="hljs-string">&#x27;rb&#x27;</span>),
+  <span class="hljs-string">&#x27;file2&#x27;</span>: <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;file2.txt&#x27;</span>, <span class="hljs-string">&#x27;rb&#x27;</span>)
+})
+</span></span></foreignObject></svg></code></pre>
+<p>Aunque también podemos especificar explícitamente el nombre y tipo del fichero:</p>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>files = {<span class="hljs-string">&#x27;f1&#x27;</span>: (<span class="hljs-string">&#x27;cosa.pdf&#x27;</span>, <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;algo.pdf&#x27;</span>, <span class="hljs-string">&#x27;rb&#x27;</span>), <span class="hljs-string">&#x27;application/pdf&#x27;</span>)}
+response = requests.post(<span class="hljs-string">&#x27;https://httpbin.org/anything&#x27;</span>, files=files)
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="37" data-paginate="true" data-theme="etsisi" data-marpit-pagination="37" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
+<h1>Obteniendo información de la respuesta</h1>
+<p>El objeto de respuesta tiene muchos miembros interesantes, como lo son:</p>
+<ul>
+<li><code>status_code</code>: Código de estado HTTP</li>
+<li><code>headers</code>: Diccionario con las cabeceras de la respuesta</li>
+<li><code>cookies</code>: Diccionario con las cookies de la respuesta</li>
+<li><code>content</code>: Contenido de la respuesta</li>
+<li><code>encoding</code>: Codificación de la respuesta (se puede establecer)</li>
+<li><code>text</code>: Contenido de la respuesta en formato texto (decodificado)</li>
+<li><code>history</code>: Información de todas las redirecciones que han ocurrido
+<ul>
+<li>Aunque se puede especificar <code>allow_redirects = False</code> para evitar redirecciones</li>
+</ul>
+</li>
+<li><code>json()</code>: Contenido de la respuesta en formato JSON</li>
+<li><code>raise_for_status()</code>: Lanza una excepción si el código de estado no es 200</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="38" data-paginate="true" data-theme="etsisi" data-marpit-pagination="38" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
+<h1>¿Cómo se pueden especifican las cabeceras?</h1>
+<p>Cualquier método de petición acepta un parámetro <code>headers</code>:</p>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>response = requests.get(<span class="hljs-string">&#x27;https://httpbin.org/anything&#x27;</span>, headers={
+    <span class="hljs-string">&#x27;Accept&#x27;</span>: <span class="hljs-string">&#x27;application/json;q=0.9,*/*;q=0.8&#x27;</span>,
+    <span class="hljs-string">&#x27;Accept-Encoding&#x27;</span>: <span class="hljs-string">&#x27;gzip, deflate&#x27;</span>,
+    <span class="hljs-string">&#x27;Accept-Language&#x27;</span>: <span class="hljs-string">&#x27;en-US, en;q=0.9, es;q=0.8&#x27;</span>
+})
+response.headers
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="39" data-paginate="true" data-theme="etsisi" data-marpit-pagination="39" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
+<h1>¿Cómo enviar <em>cookies</em> en una petición?</h1>
+<p>Aunque se puede perfectamente con <code>urllib</code>, con <code>requests</code> es mucho más sencillo:</p>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>jar = requests.cookies.RequestsCookieJar()
+jar.<span class="hljs-built_in">set</span>(<span class="hljs-string">&#x27;cookie1&#x27;</span>, <span class="hljs-string">&#x27;v1&#x27;</span>, domain=<span class="hljs-string">&#x27;httpbin.org&#x27;</span>, path=<span class="hljs-string">&#x27;/&#x27;</span>)
+jar.<span class="hljs-built_in">set</span>(<span class="hljs-string">&#x27;cookie2&#x27;</span>, <span class="hljs-string">&#x27;v2&#x27;</span>, domain=<span class="hljs-string">&#x27;httpbin.org&#x27;</span>, path=<span class="hljs-string">&#x27;/anything&#x27;</span>)
+response = requests.get(<span class="hljs-string">&#x27;https://httpbin.org/anything&#x27;</span>, cookies=jar)
+response.text
+</span></span></foreignObject></svg></code></pre>
+<blockquote>
+<p><sup>5</sup> De hecho, trabajar con el objeto <code>CookieJar</code> de <code>urllib</code> es bastante pesado, por eso ni lo comentamos</p>
+</blockquote>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="40" data-paginate="true" data-theme="etsisi" data-marpit-pagination="40" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
+<h1>¿Cómo mantener sesiones?</h1>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>session = requests.Session()
+session.get(<span class="hljs-string">&#x27;https://httpbin.org/cookies/set?cookie1=val1&#x27;</span>)
+session.get(<span class="hljs-string">&#x27;https://httpbin.org/cookies/set?cookie2=val2&#x27;</span>)
+response = session.get(<span class="hljs-string">&#x27;https://httpbin.org/cookies&#x27;</span>)
+response.text
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="41" data-paginate="true" data-theme="etsisi" data-marpit-pagination="41" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
+<h1>Autenticación</h1>
+<p>La biblioteca permite autenticarse con varios métodos:</p>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>auth = HTTPBasicAuth(<span class="hljs-string">&#x27;user&#x27;</span>, <span class="hljs-string">&#x27;passwd&#x27;</span>)  <span class="hljs-comment"># HTTPDigestAuth, HTTPProxyAuth, ...</span>
+<span class="hljs-comment"># auth = </span>
+response = requests.get(<span class="hljs-string">&#x27;https://httpbin.org/hidden-basic-auth/user/passwd&#x27;</span>, auth=auth)
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="42" data-paginate="true" data-theme="etsisi" data-marpit-pagination="42" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
+<h1>¿Cómo podemos usar <em>proxies</em>?</h1>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>proxies={<span class="hljs-string">&#x27;http&#x27;</span>: <span class="hljs-string">&#x27;http://ip:puerto&#x27;</span>, <span class="hljs-string">&#x27;https&#x27;</span>: <span class="hljs-string">&#x27;https://ip:puerto})
+requests.get(&#x27;</span>https://httpbin.org/anything<span class="hljs-string">&#x27;, proxies=proxies)
+</span></span></span></foreignObject></svg></code></pre>
+<p>Para mantenerlos en una sesión, se puede hacer de la siguiente forma:</p>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>proxies = {<span class="hljs-string">&#x27;http&#x27;</span>: <span class="hljs-string">&#x27;http://ip:puerto&#x27;</span>, <span class="hljs-string">&#x27;https&#x27;</span>: <span class="hljs-string">&#x27;https://ip:puerto&#x27;</span>}
+session = requests.Session()
+session.proxies.update(proxies)
+session.get(<span class="hljs-string">&#x27;https://httpbin.org/anything&#x27;</span>)
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="43" data-paginate="true" data-theme="etsisi" data-marpit-pagination="43" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
+<h1><i>BONUS TRACK</i>: Peticiones a través de <a href="https://www.torproject.org/">Tor</a></h1>
+<p>Podemos usar los proxies configurados para navegar a través de Tor:</p>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>proxies = {
+  <span class="hljs-string">&#x27;http&#x27;</span>: <span class="hljs-string">&#x27;socks5://127.0.0.1:9050&#x27;</span>,
+  <span class="hljs-string">&#x27;https&#x27;</span>: <span class="hljs-string">&#x27;socks5://127.0.0.1:9050&#x27;</span>
+}
+requests.get(<span class="hljs-string">&#x27;https://httpbin.org/anything&#x27;</span>, proxies=proxies)
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="44" data-paginate="true" data-class="section" data-theme="etsisi" class="section" data-marpit-pagination="44" data-marpit-pagination-total="65" style="--paginate:true;--class:section;--theme:etsisi;">
+<h1>Extrayendo información del contenido</h1>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="45" data-paginate="true" data-theme="etsisi" data-marpit-pagination="45" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
+<h1>Introducción</h1>
+<p>Una vez descargado el contenido, tenemos varias formas de trabajar con él:</p>
+<ul>
+<li>Buscando y extrayendo subcadenas con los métodos de <code>string</code>
+<ul>
+<li>E inmediatamente después haremos como que no lo hemos pensado</li>
+</ul>
+</li>
+<li>Expresiones regulares: biblioteca <code>re</code></li>
+<li>XPath: Lenguaje de consulta de documentos XML</li>
+<li>HTQL: Lenguaje de consulta de documentos HTML</li>
+</ul>
+<p>Veamos una pqueña introducción a cada uno de ellos</p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="46" data-paginate="true" data-class="section" data-theme="etsisi" class="section" data-marpit-pagination="46" data-marpit-pagination-total="65" style="--paginate:true;--class:section;--theme:etsisi;">
+<h1>Extrayendo información del contenido</h1>
+<h3>Expresiones regulares</h3>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="47" data-paginate="true" data-theme="etsisi" data-marpit-pagination="47" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
+<h1>Expresiones regulares</h1>
+<p>Las expresiones regulares son un mecanismo muy potente de definir lenguajes (y estructuras) de tipo 3</p>
+<ul>
+<li>Son muy compactas y (relativamente) fáciles de entender</li>
+<li>Prácticamente cualquier lenguaje de programación las soporta</li>
+</ul>
+<p>Son cadenas de texto que intentamos que &quot;encajen&quot; con el texto que queremos extraer</p>
+<ul>
+<li>Encajar (<em>match</em>) significa que la cadena a extraer cumple una serie de condiciones
+<ul>
+<li><code>a href=</code> encaja exactamente con ese texto</li>
+<li><code>a.*=</code> encaja con cualquier texto que empiece por <code>a</code>, 0 o más caracteres y un <code>=</code>, como <code>a href=</code>, <code>a class=</code>, <code>a id=</code>, etc.</li>
+</ul>
+</li>
+</ul>
+<p>Hay mucho escrito sobre expresiones regulares, aquí veremos lo <strong>muy</strong> básico</p>
+<ul>
+<li>Disponible en <a href="http://docs.python.org/library/re.html">http://docs.python.org/library/re.html</a></li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="48" data-paginate="true" data-theme="etsisi" data-marpit-pagination="48" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
+<h1>Metacaracteres</h1>
+<div class="columns">
+<div class="column">
+<ul>
+<li><code>.</code>: Cualquier carácter</li>
+<li><code>*</code>: La expresión precedente se repite 0 o más veces</li>
+<li><code>+</code>: La expresión precedente se repite 1 o más veces</li>
+<li><code>?</code>: La expresión precedente es opcional</li>
+<li><code>{n}</code>: La expresión precedente se repite exactamente <code>n</code> veces</li>
+<li><code>{n,}</code>: La expresión precedente se repite al menos <code>n</code> veces</li>
+<li><code>{n,m}</code>: La expresión precedente se repite entre <code>n</code> y <code>m</code> veces</li>
+</ul>
+</div>
+<div class="column">
+<ul>
+<li><code>\n</code>: Salto de línea</li>
+<li><code>\t</code>: Tabulador</li>
+<li><code>\s</code>: Cualquier carácter de espaciado (blanco, tabulador, salto de línea, etc.)</li>
+<li><code>^</code>: Distinto de
+<ul>
+<li><code>^&lt;*</code>: Cualquier carácter distinto de <code>&lt;</code> 0 o más veces</li>
+</ul>
+</li>
+<li><code>\</code>: Carácter de escape para usar metacaracteres como caracteres normales</li>
+<li><code>[]</code>: Conjunto de caracteres
+<ul>
+<li><code>[abc]</code>, <code>[a-zA-Z]</code>, <code>[a-z0-9]</code>, etc.</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="49" data-paginate="true" data-theme="etsisi" data-marpit-pagination="49" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
+<h1>Encaje &quot;voraz&quot;</h1>
+<p>Por defecto, las expresiones regulares intentan encajar con el texto de la forma más larga posible</p>
+<ul>
+<li><code>.*c</code> aplicada a <code>ababcababcab</code> devolverá <code>ababcababc</code> en lugar de <code>ababc</code></li>
+</ul>
+<p>Para hacer que no sea así, podemos usar el carácter <code>?</code> después del <code>*</code>, del <code>+</code> o del <code>?</code></p>
+<ul>
+<li><code>.*?c</code> aplicada a <code>ababcababcab</code> devolverá <code>ababc</code></li>
+</ul>
+<p>En <em>scraping</em> se suele usar siempre el encaje no voraz</p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="50" data-paginate="true" data-theme="etsisi" data-marpit-pagination="50" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
+<h1>Comprobar existencia de un texto</h1>
+<p>Podemos determinar la existencia de cierto texto o patrón mediante la función <code>search</code></p>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">import</span> re
+
+texto = <span class="hljs-string">&#x27;ababcababcab&#x27;</span>
+patron = <span class="hljs-string">&#x27;a.*?c&#x27;</span>
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;Encontrado&#x27;</span> <span class="hljs-keyword">if</span> re.search(patron, texto) <span class="hljs-keyword">else</span> <span class="hljs-string">&#x27;No encontrado&#x27;</span>)
+</span></span></foreignObject></svg></code></pre>
+<p>Si queremos recuperar el texto, tenemos que usar &quot;grupos&quot; (con paréntesis)</p>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>texto = <span class="hljs-string">&#x27;ababcababcab&#x27;</span>
+patron = <span class="hljs-string">&#x27;a(.*?)c&#x27;</span>
+<span class="hljs-keyword">if</span> m := re.search(patron, texto):
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;Encontrado: <span class="hljs-subst">{m.group(<span class="hljs-number">1</span>)}</span>)
+else:
+    print(&#x27;</span>No encontrado<span class="hljs-string">&#x27;)
+</span></span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="51" data-paginate="true" data-theme="etsisi" data-marpit-pagination="51" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
+<h1>¿Qué pasa si buscamos muchos patrones?</h1>
+<p>Pues que usaremos <code>findall</code> en lugar de <code>search</code></p>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>texto = <span class="hljs-string">&#x27;ababcababcab&#x27;</span>
+patron = <span class="hljs-string">&#x27;a(.*?)c&#x27;</span>
+<span class="hljs-built_in">print</span>(re.findall(patron, texto))
+</span></span></foreignObject></svg></code></pre>
+<p>En lugar de un objeto <em>match</em> nos devuelve una lista de cadenas</p>
+<ul>
+<li>Hay <em>flags</em> que vienen bien porque modifican el comporamiento de los metacaracteres:
+<ul>
+<li><code>re.DOTALL</code>: <code>.</code> coincide con cualquier carácter, incluido el salto de línea <code>\n</code></li>
+<li><code>re.MULTILINE</code>: <code>^</code> coincidirá con el comienzo de línea y <code>$</code> con el final de línea</li>
+<li><code>re.IGNORECASE</code>: Hace que las expresiones regulares sean insensibles a mayúsculas y minúsculas</li>
+</ul>
+</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="52" data-paginate="true" data-theme="etsisi" data-marpit-pagination="52" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
+<h1>Ganando eficiencia con expresiones regulares</h1>
+<p>Las expresiones regulares se compilan para ejecutarse sobre un texto</p>
+<ul>
+<li>Cada vez que usamos uno de sus métodos (e.g. <code>search</code>, <code>findall</code>, ...) compilamos la expresión</li>
+</ul>
+<p>Es recomendable compilar una expresión previamente si la vamos a usar mucho</p>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>expr = re.<span class="hljs-built_in">compile</span>(<span class="hljs-string">&#x27;a(.*?)c&#x27;</span>)
+expr.search(<span class="hljs-string">&#x27;ababcababcab&#x27;</span>)
+expr.findall(<span class="hljs-string">&#x27;ababcababcab&#x27;</span>)
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="53" data-paginate="true" data-theme="etsisi" data-marpit-pagination="53" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
+<h1>Algunos consejos</h1>
+<p>Para extraer varios valores es muy cómodo dividir la cadena de la expresión en trozos</p>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>xtr = <span class="hljs-string">&#x27;.*?&lt;a href=“(.*?)&quot;&#x27;</span> <span class="hljs-comment"># url</span>
+xtr += <span class="hljs-string">&#x27;.*?&lt;td&gt;(.*?)&lt;/td&gt;&#x27;</span> <span class="hljs-comment"># incidencia</span>
+</span></span></foreignObject></svg></code></pre>
+<p>Hay herramientas online que ayudan a explicar los patrones que necesitamos</p>
+<ul>
+<li>&lt;<a href="http://www.regex101.com">www.regex101.com</a>&gt;</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="54" data-paginate="true" data-class="section" data-theme="etsisi" class="section" data-marpit-pagination="54" data-marpit-pagination-total="65" style="--paginate:true;--class:section;--theme:etsisi;">
+<h1>Extrayendo información del contenido</h1>
+<h3>XPath</h3>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="55" data-paginate="true" data-theme="etsisi" data-marpit-pagination="55" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
+<h1>¿Qué es XPath?</h1>
+<p>Se trata de un lenguaje de consula para navegar a través de documentos XML y HTML</p>
+<ul>
+<li>Desarrollado por el W3C como parte de la recomendación XSLT<sup>6</sup></li>
+<li>Permite seleccionar nodos y elementos específicos dentro de un documento</li>
+</ul>
+<p>Ofrece un mecanismo muy preciso para la extracción de datos de páginas web</p>
+<ul>
+<li>Permite seleccionar elementos basados en su nombre, atributos y posición.</li>
+<li>Admite operadores lógicos y aritméticos para filtrar y manipular los datos.</li>
+<li>Permite acceder a elementos muy anidados y a estructuras complejas de datos.</li>
+</ul>
+<p>Para su uso, tenemos que instalar la biblioteca <code>lxml</code></p>
+<pre><code class="language-bash"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>$ pip install lxml
+</span></span></foreignObject></svg></code></pre>
+<blockquote>
+<p><sup>6</sup> Recomendación oficial de la W3C en <a href="https://www.w3.org/TR/1999/REC-xpath-19991116/">https://www.w3.org/TR/1999/REC-xpath-19991116/</a></p>
+</blockquote>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="56" data-paginate="true" data-theme="etsisi" data-marpit-pagination="56" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
+<h1>Un ejemplo de código</h1>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">import</span> request
+<span class="hljs-keyword">from</span> lxml <span class="hljs-keyword">import</span> html
+
+<span class="hljs-comment"># Obtenemos el html de una página</span>
+page = requests.get(<span class="hljs-string">&#x27;https://httpbin.org&#x27;</span>)
+<span class="hljs-comment"># La transformamos en un árbol de elementos</span>
+tree = html.fromstring(page.content)
+<span class="hljs-comment"># Seleccionamos un elemento específico usando XPath</span>
+titulo = tree.xpath(<span class="hljs-string">&#x27;//title/text()&#x27;</span>)
+</span></span></foreignObject></svg></code></pre>
+<p>Por ejemplo, para extraer los títulos de las noticias de la BBC:</p>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>page = requests.get(<span class="hljs-string">&#x27;https://www.bbc.com/news&#x27;</span>)
+tree = html.fromstring(page.content)
+<span class="hljs-built_in">print</span>(tree.xpath(<span class="hljs-string">&#x27;//a[@class=&quot;gs-c-block-link__overlay-link&quot;]/text()&#x27;</span>))
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="57" data-paginate="true" data-class="section" data-theme="etsisi" class="section" data-marpit-pagination="57" data-marpit-pagination-total="65" style="--paginate:true;--class:section;--theme:etsisi;">
+<h1>Biblioteca <code>selenium</code></h1>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="58" data-paginate="true" data-theme="etsisi" data-marpit-pagination="58" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
+<h1>Sobre esta biblioteca</h1>
+<p>Nació como entorno de pruebas para aplicaciones web</p>
+<ul>
+<li>Su principal uso es el de automatizar comportamientos en navegadores web</li>
+<li>Automatiza comportamientos en navegadores...</li>
+</ul>
+<p>En realidad, en la actualidad se usa como herramienta de scraping</p>
+<ul>
+<li>Es muy potente ya que trabaja directamente con navegadores</li>
+<li>Es de las pocas formas que tenemos de interpretar código del lado del cliente en nuestro agente</li>
+</ul>
+<p>Más información en la <a href="http://www.seleniumhq.org/">página oficial</a></p>
+<ul>
+<li>Y en la documentación de <a href="http://selenium-python.readthedocs.io/">Python</a></li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="59" data-paginate="true" data-theme="etsisi" data-marpit-pagination="59" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
+<h1>¿Cómo buscar elementos en una página?</h1>
+<p>Se apoya en dos métodos principales:</p>
+<ul>
+<li><code>find_element</code>: Primer elemento que cumpla con el criterio de búsqueda</li>
+<li><code>find_elements</code>: Lista de elementos que cumplen con el criterio de búsqueda</li>
+</ul>
+<p>Se pueden buscar por varios criterios:</p>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">from</span> selenium <span class="hljs-keyword">import</span> webdriver
+<span class="hljs-keyword">from</span> selenium.webdriver.common.by <span class="hljs-keyword">import</span> By
+
+driver = webdriver.Firefox()
+driver.get(<span class="hljs-string">&#x27;https://httpbin.org/anything&#x27;</span>)
+
+element = driver.find_element(By.ID, <span class="hljs-string">&#x27;id&#x27;</span>)
+element = driver.find_element(By.NAME, <span class="hljs-string">&#x27;name&#x27;</span>)
+element = driver.find_elements(By.CLASS_NAME, <span class="hljs-string">&#x27;class&#x27;</span>)
+element = driver.find_element(By.TAG_NAME, <span class="hljs-string">&#x27;tag&#x27;</span>)
+element = driver.find_element(By.CSS_SELECTOR, <span class="hljs-string">&#x27;selector&#x27;</span>)
+element = driver.find_element(By.XPATH, <span class="hljs-string">&#x27;xpath://etiqueta[@atributo=valor]&#x27;</span>)
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="60" data-paginate="true" data-theme="etsisi" data-marpit-pagination="60" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
+<h1>¿Cómo interactuar con los elementos?</h1>
+<p>Al emular el comporatamiento en un navegador, podemos interactuar con los elementos de la siguiente forma:</p>
+<ul>
+<li>Hacer click sobre un elemento<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>button.click()
+</span></span></foreignObject></svg></code></pre>
+</li>
+<li>Escribir sobre un elemento<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>text.send_keys(<span class="hljs-string">&#x27;texto&#x27;</span>)
+</span></span></foreignObject></svg></code></pre>
+</li>
+<li>Enviar un formulario<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>form.submit()
+</span></span></foreignObject></svg></code></pre>
+</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="61" data-paginate="true" data-theme="etsisi" data-marpit-pagination="61" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
+<h1>Esperando a que pasen cosas...</h1>
+<p>Podemos esperar a que ocurran cosas en la página con el método <code>WebDriverWait</code>:</p>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">from</span> selenium.webdriver.support.ui <span class="hljs-keyword">import</span> WebDriverWait
+<span class="hljs-keyword">from</span> selenium.webdriver.support <span class="hljs-keyword">import</span> expected_conditions <span class="hljs-keyword">as</span> EC
+<span class="hljs-keyword">from</span> selenium.webdriver.common.by <span class="hljs-keyword">import</span> By
+
+element = WebDriverWait(driver, <span class="hljs-number">10</span>).until(
+  EC.presence_of_element_located((By.ID, <span class="hljs-string">&#x27;id&#x27;</span>))
+)
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="62" data-paginate="true" data-theme="etsisi" data-marpit-pagination="62" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
+<h1>Ejemplo: Extraer enlaces de una página</h1>
+<pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="hljs-keyword">from</span> selenium <span class="hljs-keyword">import</span> webdriver
+<span class="hljs-keyword">from</span> selenium.webdriver.common.by <span class="hljs-keyword">import</span> By
+
+driver = webdriver.Firefox()
+driver.get(<span class="hljs-string">&#x27;https://httpbin.org/anything&#x27;</span>)
+
+links = [
+  a.get_attribute(<span class="hljs-string">&#x27;href&#x27;</span>)
+  <span class="hljs-keyword">for</span> a <span class="hljs-keyword">in</span> driver.find_elements(By.TAG_NAME, <span class="hljs-string">&#x27;a&#x27;</span>)
+]
+
+<span class="hljs-built_in">print</span>(links)
+</span></span></foreignObject></svg></code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="63" data-paginate="true" data-class="section" data-theme="etsisi" class="section" data-marpit-pagination="63" data-marpit-pagination-total="65" style="--paginate:true;--class:section;--theme:etsisi;">
+<h1>Evitando bloqueos</h1>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="64" data-paginate="true" data-theme="etsisi" data-marpit-pagination="64" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
+<h1>Técnicas para evitar los bloqueos</h1>
+<p>Aunque algo hemos comentado, algunas técnicas para evitar bloqueos son:</p>
+<ul>
+<li><strong>Rotación de cadenas de <em>user-agent</em></strong> entre peticiones
+<ul>
+<li>Suele ser conveniente mantener el <em>user-agent</em> durante una misma sesión</li>
+</ul>
+</li>
+<li><strong>Intervalos aleatorios entre solicitudes</strong> para asemejarse a un usuario real
+<ul>
+<li>El intervalo puede ser directamente proporcional a la cantidad de contenido</li>
+</ul>
+</li>
+<li><strong>Agentes de usuario actualizados</strong>, porque los obsoletos son factores de bloqueo</li>
+<li><strong>Proxies</strong> para evitar el bloqueo de la IP</li>
+<li>Uso de <em><strong>headless browsers</strong></em>, como <a href="http://phantomjs.org/">PhantomJS</a>, junto con bibliotecas como <a href="http://www.seleniumhq.org/">Selenium</a></li>
+<li><strong>Programar contra</strong> trampas de <em><strong>HoneyPots</strong></em>
+<ul>
+<li>E.g. Enlaces ocultos o con el mismo color de fondo que la página</li>
+</ul>
+</li>
+<li><strong>Hacer caso de</strong> la información del fichero <strong><code>robots.txt</code></strong></li>
+<li><strong>Usar</strong> las <strong>API</strong> de los servicios web para la extracción de datos</li>
+<li>Ordenar las cabeceras de la misma manera que los navegadores web</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="65" data-paginate="true" data-class="endpage" data-theme="etsisi" class="endpage" data-marpit-pagination="65" data-marpit-pagination-total="65" style="--paginate:true;--class:endpage;--theme:etsisi;">
+<h1>¡GRACIAS!</h1>
+</section>
+<script>!function(){"use strict";const t="marpitSVGPolyfill:setZoomFactor,",e=Symbol();let r,o;function n(n){const i="object"==typeof n&&n.target||document,a="object"==typeof n?n.zoom:n;window[e]||(Object.defineProperty(window,e,{configurable:!0,value:!0}),window.addEventListener("message",(({data:e,origin:r})=>{if(r===window.origin)try{if(e&&"string"==typeof e&&e.startsWith(t)){const[,t]=e.split(","),r=Number.parseFloat(t);Number.isNaN(r)||(o=r)}}catch(t){console.error(t)}})));let l=!1;Array.from(i.querySelectorAll("svg[data-marpit-svg]"),(t=>{var e,n,i,s;t.style.transform||(t.style.transform="translateZ(0)");const c=a||o||t.currentScale||1;r!==c&&(r=c,l=c);const d=t.getBoundingClientRect(),{length:u}=t.children;for(let r=0;r<u;r+=1){const o=t.children[r],a=o.getScreenCTM();if(a){const t=null!==(n=null===(e=o.x)||void 0===e?void 0:e.baseVal.value)&&void 0!==n?n:0,r=null!==(s=null===(i=o.y)||void 0===i?void 0:i.baseVal.value)&&void 0!==s?s:0,l=o.firstElementChild,{style:u}=l;u.transformOrigin||(u.transformOrigin=`${-t}px ${-r}px`),u.transform=`scale(${c}) matrix(${a.a}, ${a.b}, ${a.c}, ${a.d}, ${a.e-d.left}, ${a.f-d.top}) translateZ(0.0001px)`}}})),!1!==l&&Array.from(i.querySelectorAll("iframe"),(({contentWindow:e})=>{null==e||e.postMessage(`${t}${l}`,"null"===window.origin?"*":window.origin)}))}r=1,o=void 0;const i=(t,e,r)=>{if(t.getAttribute(e)!==r)return t.setAttribute(e,r),!0};function a({once:t=!1,target:e=document}={}){const r="Apple Computer, Inc."===navigator.vendor?[n]:[];let o=!t;const a=()=>{for(const t of r)t({target:e});!function(t=document){Array.from(t.querySelectorAll('svg[data-marp-fitting="svg"]'),(t=>{var e;const r=t.firstChild,o=r.firstChild,{scrollWidth:n,scrollHeight:a}=o;let l,s=1;if(t.hasAttribute("data-marp-fitting-code")&&(l=null===(e=t.parentElement)||void 0===e?void 0:e.parentElement),t.hasAttribute("data-marp-fitting-math")&&(l=t.parentElement),l){const t=getComputedStyle(l),e=Math.ceil(l.clientWidth-parseFloat(t.paddingLeft||"0")-parseFloat(t.paddingRight||"0"));e&&(s=e)}const c=Math.max(n,s),d=Math.max(a,1),u=`0 0 ${c} ${d}`;i(r,"width",`${c}`),i(r,"height",`${d}`),i(t,"preserveAspectRatio",getComputedStyle(t).getPropertyValue("--preserve-aspect-ratio")||"xMinYMin meet"),i(t,"viewBox",u)&&t.classList.toggle("__reflow__")}))}(e),o&&window.requestAnimationFrame(a)};return a(),()=>{o=!1}}const l=Symbol(),s=document.currentScript;((t=document)=>{if("undefined"==typeof window)throw new Error("Marp Core's browser script is valid only in browser context.");if(t[l])return t[l];const e=a({target:t}),r=()=>{e(),delete t[l]};Object.defineProperty(t,l,{configurable:!0,value:r})})(s?s.getRootNode():document)}();
+</script></foreignObject></svg></div><script>/*!! License: https://unpkg.com/@marp-team/marp-cli@1.7.0/lib/bespoke.js.LICENSE.txt */
+!function(){"use strict";const e=document.body,t=(...e)=>history.replaceState(...e),n="presenter",r="next",o=["",n,r],a="data-bespoke-marp-",i=(e,{protocol:t,host:n,pathname:r,hash:o}=location)=>{const a=e.toString();return`${t}//${n}${r}${a?"?":""}${a}${o}`},s=()=>e.dataset.bespokeView,l=e=>new URLSearchParams(location.search).get(e),d=(e,n={})=>{var r;const o={location,setter:t,...n},a=new URLSearchParams(o.location.search);for(const t of Object.keys(e)){const n=e[t];"string"==typeof n?a.set(t,n):a.delete(t)}try{o.setter({...null!==(r=window.history.state)&&void 0!==r?r:{}},"",i(a,o.location))}catch(e){console.error(e)}},c=(()=>{const e="bespoke-marp";try{return localStorage.setItem(e,e),localStorage.removeItem(e),!0}catch(e){return!1}})(),u=e=>{try{return localStorage.getItem(e)}catch(e){return null}},f=(e,t)=>{try{return localStorage.setItem(e,t),!0}catch(e){return!1}},m=e=>{try{return localStorage.removeItem(e),!0}catch(e){return!1}},g=(e,t)=>{const n="aria-hidden";t?e.setAttribute(n,"true"):e.removeAttribute(n)},p=e=>{e.parent.classList.add("bespoke-marp-parent"),e.slides.forEach((e=>e.classList.add("bespoke-marp-slide"))),e.on("activate",(t=>{const n="bespoke-marp-active",r=t.slide,o=r.classList,a=!o.contains(n);if(e.slides.forEach((e=>{e.classList.remove(n),g(e,!0)})),o.add(n),g(r,!1),a){const e=`${n}-ready`;o.add(e),document.body.clientHeight,o.remove(e)}}))},v=e=>{let t=0,n=0;Object.defineProperty(e,"fragments",{enumerable:!0,value:e.slides.map((e=>[null,...e.querySelectorAll("[data-marpit-fragment]")]))});const r=r=>void 0!==e.fragments[t][n+r],o=(r,o)=>{t=r,n=o,e.fragments.forEach(((e,t)=>{e.forEach(((e,n)=>{if(null==e)return;const i=t<r||t===r&&n<=o;e.setAttribute(`${a}fragment`,(i?"":"in")+"active");const s=`${a}current-fragment`;t===r&&n===o?e.setAttribute(s,"current"):e.removeAttribute(s)}))})),e.fragmentIndex=o;const i={slide:e.slides[r],index:r,fragments:e.fragments[r],fragmentIndex:o};e.fire("fragment",i)};e.on("next",(({fragment:a=!0})=>{if(a){if(r(1))return o(t,n+1),!1;const a=t+1;e.fragments[a]&&o(a,0)}else{const r=e.fragments[t].length;if(n+1<r)return o(t,r-1),!1;const a=e.fragments[t+1];a&&o(t+1,a.length-1)}})),e.on("prev",(({fragment:a=!0})=>{if(r(-1)&&a)return o(t,n-1),!1;const i=t-1;e.fragments[i]&&o(i,e.fragments[i].length-1)})),e.on("slide",(({index:t,fragment:n})=>{let r=0;if(void 0!==n){const o=e.fragments[t];if(o){const{length:e}=o;r=-1===n?e-1:Math.min(Math.max(n,0),e-1)}}o(t,r)})),o(0,0)},h=document,y=()=>!(!h.fullscreenEnabled&&!h.webkitFullscreenEnabled),b=()=>!(!h.fullscreenElement&&!h.webkitFullscreenElement),x=e=>{e.fullscreen=()=>{y()&&(async()=>{return b()?null===(e=h.exitFullscreen||h.webkitExitFullscreen)||void 0===e?void 0:e.call(h):((e=h.body)=>{var t;return null===(t=e.requestFullscreen||e.webkitRequestFullscreen)||void 0===t?void 0:t.call(e)})();var e})()},document.addEventListener("keydown",(t=>{"f"!==t.key&&"F11"!==t.key||t.altKey||t.ctrlKey||t.metaKey||!y()||(e.fullscreen(),t.preventDefault())}))},w="bespoke-marp-inactive",k=(e=2e3)=>({parent:t,fire:n})=>{const r=t.classList,o=e=>n(`marp-${e?"":"in"}active`);let a;const i=()=>{a&&clearTimeout(a),a=setTimeout((()=>{r.add(w),o()}),e),r.contains(w)&&(r.remove(w),o(!0))};for(const e of["mousedown","mousemove","touchend"])document.addEventListener(e,i);setTimeout(i,0)},E=["AUDIO","BUTTON","INPUT","SELECT","TEXTAREA","VIDEO"],L=e=>{e.parent.addEventListener("keydown",(e=>{if(!e.target)return;const t=e.target;(E.includes(t.nodeName)||"true"===t.contentEditable)&&e.stopPropagation()}))},$=e=>{window.addEventListener("load",(()=>{for(const t of e.slides){const e=t.querySelector("[data-marp-fitting]")?"":"hideable";t.setAttribute(`${a}load`,e)}}))},S=({interval:e=250}={})=>t=>{document.addEventListener("keydown",(e=>{if(" "===e.key&&e.shiftKey)t.prev();else if("ArrowLeft"===e.key||"ArrowUp"===e.key||"PageUp"===e.key)t.prev({fragment:!e.shiftKey});else if(" "!==e.key||e.shiftKey)if("ArrowRight"===e.key||"ArrowDown"===e.key||"PageDown"===e.key)t.next({fragment:!e.shiftKey});else if("End"===e.key)t.slide(t.slides.length-1,{fragment:-1});else{if("Home"!==e.key)return;t.slide(0)}else t.next();e.preventDefault()}));let n,r,o=0;t.parent.addEventListener("wheel",(a=>{let i=!1;const s=(e,t)=>{e&&(i=i||((e,t)=>((e,t)=>{const n="X"===t?"Width":"Height";return e[`client${n}`]<e[`scroll${n}`]})(e,t)&&((e,t)=>{const{overflow:n}=e,r=e[`overflow${t}`];return"auto"===n||"scroll"===n||"auto"===r||"scroll"===r})(getComputedStyle(e),t))(e,t)),(null==e?void 0:e.parentElement)&&s(e.parentElement,t)};if(0!==a.deltaX&&s(a.target,"X"),0!==a.deltaY&&s(a.target,"Y"),i)return;a.preventDefault();const l=Math.sqrt(a.deltaX**2+a.deltaY**2);if(void 0!==a.wheelDelta){if(void 0===a.webkitForce&&Math.abs(a.wheelDelta)<40)return;if(a.deltaMode===a.DOM_DELTA_PIXEL&&l<4)return}else if(a.deltaMode===a.DOM_DELTA_PIXEL&&l<12)return;r&&clearTimeout(r),r=setTimeout((()=>{n=0}),e);const d=Date.now()-o<e,c=l<=n;if(n=l,d||c)return;let u;(a.deltaX>0||a.deltaY>0)&&(u="next"),(a.deltaX<0||a.deltaY<0)&&(u="prev"),u&&(t[u](),o=Date.now())}))},P=(e=".bespoke-marp-osc")=>{const t=document.querySelector(e);if(!t)return()=>{};const n=(e,n)=>{t.querySelectorAll(`[${a}osc=${JSON.stringify(e)}]`).forEach(n)};return y()||n("fullscreen",(e=>e.style.display="none")),c||n("presenter",(e=>{e.disabled=!0,e.title="Presenter view is disabled due to restricted localStorage."})),e=>{t.addEventListener("click",(t=>{if(t.target instanceof HTMLElement){const{bespokeMarpOsc:n}=t.target.dataset;n&&t.target.blur();const r={fragment:!t.shiftKey};"next"===n?e.next(r):"prev"===n?e.prev(r):"fullscreen"===n?null==e||e.fullscreen():"presenter"===n&&e.openPresenterView()}})),e.parent.appendChild(t),e.on("activate",(({index:t})=>{n("page",(n=>n.textContent=`Page ${t+1} of ${e.slides.length}`))})),e.on("fragment",(({index:t,fragments:r,fragmentIndex:o})=>{n("prev",(e=>e.disabled=0===t&&0===o)),n("next",(n=>n.disabled=t===e.slides.length-1&&o===r.length-1))})),e.on("marp-active",(()=>g(t,!1))),e.on("marp-inactive",(()=>g(t,!0))),y()&&(e=>{for(const t of["","webkit"])h.addEventListener(t+"fullscreenchange",e)})((()=>n("fullscreen",(e=>e.classList.toggle("exit",y()&&b())))))}},T=e=>{window.addEventListener("message",(t=>{if(t.origin!==window.origin)return;const[n,r]=t.data.split(":");if("navigate"===n){const[t,n]=r.split(",");let o=Number.parseInt(t,10),a=Number.parseInt(n,10)+1;a>=e.fragments[o].length&&(o+=1,a=0),e.slide(o,{fragment:a})}}))};var I=["area","base","br","col","command","embed","hr","img","input","keygen","link","meta","param","source","track","wbr"];let N=e=>String(e).replace(/[&<>"']/g,(e=>`&${C[e]};`)),C={"&":"amp","<":"lt",">":"gt",'"':"quot","'":"apos"},A="dangerouslySetInnerHTML",D={className:"class",htmlFor:"for"},M={};function B(e,t){let n=[],r="";t=t||{};for(let e=arguments.length;e-- >2;)n.push(arguments[e]);if("function"==typeof e)return t.children=n.reverse(),e(t);if(e){if(r+="<"+e,t)for(let e in t)!1!==t[e]&&null!=t[e]&&e!==A&&(r+=` ${D[e]?D[e]:N(e)}="${N(t[e])}"`);r+=">"}if(-1===I.indexOf(e)){if(t[A])r+=t[A].__html;else for(;n.length;){let e=n.pop();if(e)if(e.pop)for(let t=e.length;t--;)n.push(e[t]);else r+=!0===M[e]?e:N(e)}r+=e?`</${e}>`:""}return M[r]=!0,r}const K=({children:e})=>B(null,null,...e),O="bespoke-marp-presenter-",q={container:`${O}container`,dragbar:`${O}dragbar-container`,next:`${O}next`,nextContainer:`${O}next-container`,noteContainer:`${O}note-container`,noteWrapper:`${O}note-wrapper`,noteButtons:`${O}note-buttons`,infoContainer:`${O}info-container`,infoPage:`${O}info-page`,infoPageText:`${O}info-page-text`,infoPagePrev:`${O}info-page-prev`,infoPageNext:`${O}info-page-next`,noteButtonsBigger:`${O}note-bigger`,noteButtonsSmaller:`${O}note-smaller`,infoTime:`${O}info-time`,infoTimer:`${O}info-timer`},_=e=>{const{title:t}=document;document.title="[Presenter view]"+(t?` - ${t}`:"");const n={},r=e=>(n[e]=n[e]||document.querySelector(`.${e}`),n[e]);document.body.appendChild((e=>{const t=document.createElement("div");return t.className=q.container,t.appendChild(e),t.insertAdjacentHTML("beforeend",B(K,null,B("div",{class:q.nextContainer},B("iframe",{class:q.next,src:"?view=next"})),B("div",{class:q.dragbar}),B("div",{class:q.noteContainer},B("div",{class:q.noteWrapper}),B("div",{class:q.noteButtons},B("button",{class:q.noteButtonsSmaller,tabindex:"-1",title:"Smaller notes font size"},"Smaller notes font size"),B("button",{class:q.noteButtonsBigger,tabindex:"-1",title:"Bigger notes font size"},"Bigger notes font size"))),B("div",{class:q.infoContainer},B("div",{class:q.infoPage},B("button",{class:q.infoPagePrev,tabindex:"-1",title:"Previous"},"Previous"),B("span",{class:q.infoPageText}),B("button",{class:q.infoPageNext,tabindex:"-1",title:"Next"},"Next")),B("time",{class:q.infoTime,title:"Current time"}),B("time",{class:q.infoTimer,title:"Timer"})))),t})(e.parent)),(e=>{let t=!1;r(q.dragbar).addEventListener("mousedown",(()=>{t=!0,r(q.dragbar).classList.add("active")})),window.addEventListener("mouseup",(()=>{t=!1,r(q.dragbar).classList.remove("active")})),window.addEventListener("mousemove",(e=>{if(!t)return;const n=e.clientX/document.documentElement.clientWidth*100;r(q.container).style.setProperty("--bespoke-marp-presenter-split-ratio",`${Math.max(0,Math.min(100,n))}%`)})),r(q.nextContainer).addEventListener("click",(()=>e.next()));const n=r(q.next),o=(a=n,(e,t)=>{var n;return null===(n=a.contentWindow)||void 0===n?void 0:n.postMessage(`navigate:${e},${t}`,"null"===window.origin?"*":window.origin)});var a;n.addEventListener("load",(()=>{r(q.nextContainer).classList.add("active"),o(e.slide(),e.fragmentIndex),e.on("fragment",(({index:e,fragmentIndex:t})=>o(e,t)))}));const i=document.querySelectorAll(".bespoke-marp-note");i.forEach((e=>{e.addEventListener("keydown",(e=>e.stopPropagation())),r(q.noteWrapper).appendChild(e)})),e.on("activate",(()=>i.forEach((t=>t.classList.toggle("active",t.dataset.index==e.slide())))));let s=0;const l=e=>{s=Math.max(-5,s+e),r(q.noteContainer).style.setProperty("--bespoke-marp-note-font-scale",(1.2**s).toFixed(4))},d=()=>l(1),c=()=>l(-1),u=r(q.noteButtonsBigger),f=r(q.noteButtonsSmaller);u.addEventListener("click",(()=>{u.blur(),d()})),f.addEventListener("click",(()=>{f.blur(),c()})),document.addEventListener("keydown",(e=>{"+"===e.key&&d(),"-"===e.key&&c()}),!0),e.on("activate",(({index:t})=>{r(q.infoPageText).textContent=`${t+1} / ${e.slides.length}`}));const m=r(q.infoPagePrev),g=r(q.infoPageNext);m.addEventListener("click",(t=>{m.blur(),e.prev({fragment:!t.shiftKey})})),g.addEventListener("click",(t=>{g.blur(),e.next({fragment:!t.shiftKey})})),e.on("fragment",(({index:t,fragments:n,fragmentIndex:r})=>{m.disabled=0===t&&0===r,g.disabled=t===e.slides.length-1&&r===n.length-1}));let p=new Date;const v=()=>{const e=new Date,t=e=>`${Math.floor(e)}`.padStart(2,"0"),n=e.getTime()-p.getTime(),o=t(n/1e3%60),a=t(n/1e3/60%60),i=t(n/36e5%24);r(q.infoTime).textContent=e.toLocaleTimeString(),r(q.infoTimer).textContent=`${i}:${a}:${o}`};v(),setInterval(v,250),r(q.infoTimer).addEventListener("click",(()=>{p=new Date}))})(e)},X=e=>{if(!(e=>e.syncKey&&"string"==typeof e.syncKey)(e))throw new Error("The current instance of Bespoke.js is invalid for Marp bespoke presenter plugin.");Object.defineProperties(e,{openPresenterView:{enumerable:!0,value:F},presenterUrl:{enumerable:!0,get:U}}),c&&document.addEventListener("keydown",(t=>{"p"!==t.key||t.altKey||t.ctrlKey||t.metaKey||(t.preventDefault(),e.openPresenterView())}))};function F(){const{max:e,floor:t}=Math,n=e(t(.85*window.innerWidth),640),r=e(t(.85*window.innerHeight),360);return window.open(this.presenterUrl,O+this.syncKey,`width=${n},height=${r},menubar=no,toolbar=no`)}function U(){const e=new URLSearchParams(location.search);return e.set("view","presenter"),e.set("sync",this.syncKey),i(e)}const V=e=>{const t=s();return t===r&&e.appendChild(document.createElement("span")),{"":X,[n]:_,[r]:T}[t]},R=e=>{e.on("activate",(t=>{document.querySelectorAll(".bespoke-progress-parent > .bespoke-progress-bar").forEach((n=>{n.style.flexBasis=100*t.index/(e.slides.length-1)+"%"}))}))},j=e=>{const t=Number.parseInt(e,10);return Number.isNaN(t)?null:t},H=(e={})=>{const t={history:!0,...e};return e=>{let n=!0;const r=e=>{const t=n;try{return n=!0,e()}finally{n=t}},o=(t={fragment:!0})=>{((t,n)=>{const{min:r,max:o}=Math,{fragments:a,slides:i}=e,s=o(0,r(t,i.length-1)),l=o(0,r(n||0,a[s].length-1));s===e.slide()&&l===e.fragmentIndex||e.slide(s,{fragment:l})})((j(location.hash.slice(1))||1)-1,t.fragment?j(l("f")||""):null)};e.on("fragment",(({index:e,fragmentIndex:r})=>{n||d({f:0===r||r.toString()},{location:{...location,hash:`#${e+1}`},setter:(...e)=>t.history?history.pushState(...e):history.replaceState(...e)})})),setTimeout((()=>{o(),window.addEventListener("hashchange",(()=>r((()=>{o({fragment:!1}),d({f:void 0})})))),window.addEventListener("popstate",(()=>{n||r((()=>o()))})),n=!1}),0)}},W=(e={})=>{var n;const r=e.key||(null===(n=window.history.state)||void 0===n?void 0:n.marpBespokeSyncKey)||Math.random().toString(36).slice(2),o=`bespoke-marp-sync-${r}`;var a;a={marpBespokeSyncKey:r},d({},{setter:(e,...n)=>t({...e,...a},...n)});const i=()=>{const e=u(o);return e?JSON.parse(e):Object.create(null)},s=e=>{const t=i(),n={...t,...e(t)};return f(o,JSON.stringify(n)),n},l=()=>{window.removeEventListener("pageshow",l),s((e=>({reference:(e.reference||0)+1})))};return e=>{l(),Object.defineProperty(e,"syncKey",{value:r,enumerable:!0});let t=!0;setTimeout((()=>{e.on("fragment",(e=>{t&&s((()=>({index:e.index,fragmentIndex:e.fragmentIndex})))}))}),0),window.addEventListener("storage",(n=>{if(n.key===o&&n.oldValue&&n.newValue){const r=JSON.parse(n.oldValue),o=JSON.parse(n.newValue);if(r.index!==o.index||r.fragmentIndex!==o.fragmentIndex)try{t=!1,e.slide(o.index,{fragment:o.fragmentIndex})}finally{t=!0}}}));const n=()=>{const{reference:e}=i();void 0===e||e<=1?m(o):s((()=>({reference:e-1})))};window.addEventListener("pagehide",(e=>{e.persisted&&window.addEventListener("pageshow",l),n()})),e.on("destroy",n)}},{PI:Y,abs:J,sqrt:z,atan2:G}=Math,Q={passive:!0},Z=({slope:e=-.7,swipeThreshold:t=30}={})=>n=>{let r;const o=n.parent,a=e=>{const t=o.getBoundingClientRect();return{x:e.pageX-(t.left+t.right)/2,y:e.pageY-(t.top+t.bottom)/2}};o.addEventListener("touchstart",(({touches:e})=>{r=1===e.length?a(e[0]):void 0}),Q),o.addEventListener("touchmove",(e=>{if(r)if(1===e.touches.length){e.preventDefault();const t=a(e.touches[0]),n=t.x-r.x,o=t.y-r.y;r.delta=z(J(n)**2+J(o)**2),r.radian=G(n,o)}else r=void 0})),o.addEventListener("touchend",(o=>{if(r){if(r.delta&&r.delta>=t&&r.radian){const t=(r.radian-e+Y)%(2*Y)-Y;n[t<0?"next":"prev"](),o.stopPropagation()}r=void 0}}),Q)},ee="_tA",te=e=>{const t=document.documentTransition;if(!t)return;let n;e._tP=!1;const r=(n,{back:r,cond:o})=>a=>{var i,s;const l=e.slides[e.slide()].querySelector("section[data-transition]");if(!l)return!0;const d=document.querySelector(".bespoke-marp-osc"),c=d?[d]:void 0;if(e._tP){if(a._tA){e._tP=!1;try{t.start({sharedElements:c}).catch((()=>{}))}catch(e){}return!0}}else{if(!o(a))return!0;const d="transition"+(a.back||r?"Back":""),u=Number.parseInt(null!==(i=l.dataset[`${d}Duration`])&&void 0!==i?i:"",10),f=Number.parseInt(null!==(s=l.dataset[`${d}Delay`])&&void 0!==s?s:"",10),m={};Number.isNaN(u)||(m.duration=u.toString()),Number.isNaN(f)||(m.delay=f.toString()),e._tP=t.prepare({rootTransition:l.dataset[d],rootConfig:m,sharedElements:c}).then((()=>n(a))).catch((()=>n(a)))}return!1};e.on("prev",r((t=>e.prev({...t,[ee]:!0})),{back:!0,cond:e=>{var t;return e.index>0&&!((null===(t=e.fragment)||void 0===t||t)&&n.fragmentIndex>0)}})),e.on("next",r((t=>e.next({...t,[ee]:!0})),{cond:t=>t.index+1<e.slides.length&&!(n.fragmentIndex+1<n.fragments.length)})),setTimeout((()=>{e.on("slide",r((t=>e.slide(t.index,{...t,[ee]:!0})),{cond:t=>{const n=e.slide();return t.index!==n&&(t.back=t.index<n,!0)}}))}),0),e.on("fragment",(e=>{n=e}))};let ne;const re=()=>(void 0===ne&&(ne="wakeLock"in navigator&&navigator.wakeLock),ne),oe=async()=>{const e=re();if(e)try{return await e.request("screen")}catch(e){console.warn(e)}return null},ae=async()=>{if(!re())return;let e;const t=()=>{e&&"visible"===document.visibilityState&&oe()};for(const e of["visibilitychange","fullscreenchange"])document.addEventListener(e,t);return e=await oe(),e};((t=document.getElementById("p"))=>{(()=>{const t=l("view");e.dataset.bespokeView=t===r||t===n?t:""})();const a=(e=>{const t=l(e);return d({[e]:void 0}),t})("sync")||void 0;var i,c,u,f,m,g,h,y,b,w,E,T;i=t,c=((...e)=>{const t=o.findIndex((e=>s()===e));return e.map((([e,n])=>e[t]&&n)).filter((e=>e))})([[1,1,0],W({key:a})],[[1,1,1],V(t)],[[1,1,0],L],[[1,1,1],p],[[1,0,0],k()],[[1,1,1],$],[[1,1,1],H({history:!1})],[[1,1,0],S()],[[1,1,0],x],[[1,0,0],R],[[1,1,0],Z()],[[1,0,0],P()],[[1,0,0],te],[[1,1,1],v],[[1,1,0],ae]),f=1===(i.parent||i).nodeType?i.parent||i:document.querySelector(i.parent||i),m=[].filter.call("string"==typeof i.slides?f.querySelectorAll(i.slides):i.slides||f.children,(function(e){return"SCRIPT"!==e.nodeName})),g={},h=function(e,t){return(t=t||{}).index=m.indexOf(e),t.slide=e,t},w=function(e,t){m[e]&&(u&&b("deactivate",h(u,t)),u=m[e],b("activate",h(u,t)))},E=function(e,t){var n=m.indexOf(u)+e;b(e>0?"next":"prev",h(u,t))&&w(n,t)},T={off:y=function(e,t){g[e]=(g[e]||[]).filter((function(e){return e!==t}))},on:function(e,t){return(g[e]||(g[e]=[])).push(t),y.bind(null,e,t)},fire:b=function(e,t){return(g[e]||[]).reduce((function(e,n){return e&&!1!==n(t)}),!0)},slide:function(e,t){if(!arguments.length)return m.indexOf(u);b("slide",h(m[e],t))&&w(e,t)},next:E.bind(null,1),prev:E.bind(null,-1),parent:f,slides:m,destroy:function(e){b("destroy",h(u,e)),g={}}},(c||[]).forEach((function(e){e(T)})),u||w(0)})()}();</script></body></html>
