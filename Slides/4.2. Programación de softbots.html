@@ -244,7 +244,7 @@ desarrollo de aplicaciones de terceros
 <p>Parece complicado, pero en realidad es muy sencillo, basado en dos procesos:</p>
 <ol>
 <li>Navegación por los sitios web (estos procesos se denominan <em><i>spiders</i></em> o <em><i>crawlers</i></em>)</li>
-<li>Extracción de datos de sitio web (<em><i>scraping</em></i>)</li>
+<li>Extracción de datos de sitio web (<em><i>scraping</i></em>)</li>
 </ol>
 <p>Es muy útil, pero tiene ciertos <strong>inconvenientes</strong></p>
 <ul>
@@ -255,8 +255,8 @@ desarrollo de aplicaciones de terceros
 </ul>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-paginate="true" data-theme="etsisi" data-marpit-pagination="15" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
-<h1>¿Para qué se utiliza el <em>web scraping</em>?</h1>
-<p>Algunos de los dominios de aplicación del <em>web scraping</em> son:</p>
+<h1>¿Para qué se utiliza el <i>web scraping</i>?</h1>
+<p>Algunos de los dominios de aplicación del <i>web scraping</i> son:</p>
 <ul>
 <li><strong>Automatización del negocio</strong>, evitando tareas manuales tediosas como recopilar información de diversas fuentes</li>
 <li><strong>Estudios de mercado</strong>, dado que algunos datos de mercado son públicos</li>
@@ -268,7 +268,7 @@ desarrollo de aplicaciones de terceros
 </ul>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="16" data-paginate="true" data-theme="etsisi" data-marpit-pagination="16" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
-<h1>Protección contra el <em>web scraping</em></h1>
+<h1>Protección contra el <i>web scraping</i></h1>
 <p>Es lógico que algunas páginas web protejan sus datos contra el web scraping</p>
 <ul>
 <li>No es infalible, casi todo comportamiento en un navegador es replicable</li>
@@ -283,7 +283,7 @@ desarrollo de aplicaciones de terceros
 <li><strong>HoneyPot</strong>: Sitio falso para la detección de robots</li>
 </ul>
 <blockquote>
-<p><sup>2</sup> Acrónimo para <em><strong>C</strong>ompletely <strong>A</strong>utomated <strong>P</strong>ublic <strong>T</strong>uring test to tell <strong>C</strong>omputers and <strong>H</strong>umans <strong>A</strong>part</em>.<br />
+<p><sup>2</sup> Acrónimo para <i><strong>C</strong>ompletely <strong>A</strong>utomated <strong>P</strong>ublic <strong>T</strong>uring test to tell <strong>C</strong>omputers and <strong>H</strong>umans <strong>A</strong>part</i>.<br />
 <sup>3</sup> Echad un ojo a <a href="https://www.zenrows.com/">https://www.zenrows.com/</a>; ¿alguien se anima a hacer un TFG del tema?</p>
 </blockquote>
 </section>
@@ -308,7 +308,7 @@ desarrollo de aplicaciones de terceros
 </ul>
 <p>En España, la Ley de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE) <strong>no prohíbe explícitamente el web scraping</strong></p>
 <blockquote>
-<p><sup>4</sup> <em>I am not a lawyer</em> (IANAL), así que todo lo que digamos aquí hay que cogerlo con pinzas.</p>
+<p><sup>4</sup> <i>I am not a lawyer</i> (IANAL), así que todo lo que digamos aquí hay que cogerlo con pinzas.</p>
 </blockquote>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-paginate="true" data-class="section" data-theme="etsisi" class="section" data-marpit-pagination="18" data-marpit-pagination-total="65" style="--paginate:true;--class:section;--theme:etsisi;">
@@ -351,10 +351,10 @@ url = <span class="hljs-string">&#x27;https://www.google.com/search?&#x27;</span
 <h1>Datos por <code>POST</code></h1>
 <p>Una petición de tipo POST envía los parámetros en el cuerpo de la petición</p>
 <ul>
-<li>No tiene sentido mandar parámetros porque no tendremos acceso a la <em>query string</em></li>
+<li>No tiene sentido mandar parámetros porque no tendremos acceso a la <i>query string</i></li>
 <li>POST es más flexible que GET, ya que permite enviar datos binarios (e.g. ficheros)</li>
 </ul>
-<p>Para enviar datos por POST, basta con crear la <em>request</em> con datos:</p>
+<p>Para enviar datos por POST, basta con crear la <i>request</i> con datos:</p>
 <pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>data = urlencode({<span class="hljs-string">&#x27;key&#x27;</span>: <span class="hljs-string">&#x27;value&#x27;</span>}).encode()
 request = Request(<span class="hljs-string">&#x27;https://httpbin.org/anything&#x27;</span>, data=data)
 <span class="hljs-keyword">with</span> urlopen(request) <span class="hljs-keyword">as</span> response:
@@ -362,7 +362,7 @@ request = Request(<span class="hljs-string">&#x27;https://httpbin.org/anything&#
 </span></span></foreignObject></svg></code></pre>
 <p>Esto no funciona si el cuerpo de datos es vacío</p>
 <ul>
-<li>Se puede solucionar añadiendo el argumento <code>method='POST'</code> al crear la <em>request</em></li>
+<li>Se puede solucionar añadiendo el argumento <code>method='POST'</code> al crear la <i>request</i></li>
 <li>De hecho con este argumento se especifica el método de la petición</li>
 </ul>
 </section>
@@ -374,8 +374,8 @@ request = Request(<span class="hljs-string">&#x27;https://httpbin.org/anything&#
 </ul>
 <p>Veamos los tipos más comunes:</p>
 <ul>
-<li><code>text</code>, <code>password</code>, <code>hidden</code>, <code>textarea</code>, <code>select</code>, <code>radio</code>: Se envía el <em>name</em>/<em>value</em> del campo</li>
-<li><code>checkbox</code>: Se envían tantos <em>name</em>/<em>value</em> como checkboxes estén marcados</li>
+<li><code>text</code>, <code>password</code>, <code>hidden</code>, <code>textarea</code>, <code>select</code>, <code>radio</code>: Se envía el <i>name</i>/<i>value</i> del campo</li>
+<li><code>checkbox</code>: Se envían tantos <i>name</i>/<i>value</i> como checkboxes estén marcados</li>
 </ul>
 <p>Los formularios se pueden enviar también por <code>GET</code></p>
 <ul>
@@ -447,7 +447,7 @@ request.add_header(<span class="hljs-string">&#x27;Accept-Encoding&#x27;</span>,
 <ul>
 <li>Menos tiempo de espera y menos ancho de banda, win-win para cliente y servidor</li>
 </ul>
-<p>El <em>encoding</em> <code>br</code> (Brotli) se usa para identificar scrapers, pero <code>urllib</code> ya lo soporta</p>
+<p>El <i>encoding</i> <code>br</code> (Brotli) se usa para identificar scrapers, pero <code>urllib</code> ya lo soporta</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="27" data-paginate="true" data-theme="etsisi" data-marpit-pagination="27" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
 <h1>Cabecera <i>Accept-Language</i></h1>
@@ -497,7 +497,7 @@ request.add_header(<span class="hljs-string">&#x27;Referer&#x27;</span>, <span c
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="30" data-paginate="true" data-theme="etsisi" data-marpit-pagination="30" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
 <h1>Forma alternativa de establecer cabeceras</h1>
-<p>El posible especificar un diccionario con las cabeceras al construir la <em>request</em>:</p>
+<p>El posible especificar un diccionario con las cabeceras al construir la <i>request</i>:</p>
 <pre><code class="language-python"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>request = Request(url, data=<span class="hljs-literal">None</span>, headers={
     <span class="hljs-string">&#x27;Accept&#x27;</span>: <span class="hljs-string">&#x27;application/json;q=0.9,*/*;q=0.8&#x27;</span>,
     <span class="hljs-string">&#x27;Accept-Encoding&#x27;</span>: <span class="hljs-string">&#x27;gzip, deflate&#x27;</span>,
@@ -735,7 +735,7 @@ requests.get(<span class="hljs-string">&#x27;https://httpbin.org/anything&#x27;<
 <li><code>\</code>: Carácter de escape para usar metacaracteres como caracteres normales</li>
 <li><code>[]</code>: Conjunto de caracteres
 <ul>
-<li><code>[abc]</code>, <code>[a-zA-Z]</code>, <code>[a-z0-9]</code>, etc.</li>
+<li><code>[abc]</code>, <code>[a-zA-Z]</code>, <code>[a-z0-9]</code>, etc</li>
 </ul>
 </li>
 </ul>
@@ -751,7 +751,7 @@ requests.get(<span class="hljs-string">&#x27;https://httpbin.org/anything&#x27;<
 <ul>
 <li><code>.*?c</code> aplicada a <code>ababcababcab</code> devolverá <code>ababc</code></li>
 </ul>
-<p>En <em>scraping</em> se suele usar siempre el encaje no voraz</p>
+<p>En <i>scraping</i> se suele usar siempre el encaje no voraz</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="50" data-paginate="true" data-theme="etsisi" data-marpit-pagination="50" data-marpit-pagination-total="65" style="--paginate:true;--theme:etsisi;">
 <h1>Comprobar existencia de un texto</h1>
@@ -778,9 +778,9 @@ else:
 patron = <span class="hljs-string">&#x27;a(.*?)c&#x27;</span>
 <span class="hljs-built_in">print</span>(re.findall(patron, texto))
 </span></span></foreignObject></svg></code></pre>
-<p>En lugar de un objeto <em>match</em> nos devuelve una lista de cadenas</p>
+<p>En lugar de un objeto <code>match</code> nos devuelve una lista de cadenas</p>
 <ul>
-<li>Hay <em>flags</em> que vienen bien porque modifican el comporamiento de los metacaracteres:
+<li>Hay <i>flags</i> que vienen bien porque modifican el comporamiento de los metacaracteres:
 <ul>
 <li><code>re.DOTALL</code>: <code>.</code> coincide con cualquier carácter, incluido el salto de línea <code>\n</code></li>
 <li><code>re.MULTILINE</code>: <code>^</code> coincidirá con el comienzo de línea y <code>$</code> con el final de línea</li>
@@ -830,7 +830,7 @@ xtr += <span class="hljs-string">&#x27;.*?&lt;td&gt;(.*?)&lt;/td&gt;&#x27;</span
 <li>Permite acceder a elementos muy anidados y a estructuras complejas de datos.</li>
 </ul>
 <p>Para su uso, tenemos que instalar la biblioteca <code>lxml</code></p>
-<pre><code class="language-bash"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>$ pip install lxml
+<pre><code class="language-bash"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>pip install lxml
 </span></span></foreignObject></svg></code></pre>
 <blockquote>
 <p><sup>6</sup> Recomendación oficial de la W3C en <a href="https://www.w3.org/TR/1999/REC-xpath-19991116/">https://www.w3.org/TR/1999/REC-xpath-19991116/</a></p>
@@ -946,9 +946,9 @@ links = [
 <h1>Técnicas para evitar los bloqueos</h1>
 <p>Aunque algo hemos comentado, algunas técnicas para evitar bloqueos son:</p>
 <ul>
-<li><strong>Rotación de cadenas de <em>user-agent</em></strong> entre peticiones
+<li><strong>Rotación de cadenas de <i>user-agent</i></strong> entre peticiones
 <ul>
-<li>Suele ser conveniente mantener el <em>user-agent</em> durante una misma sesión</li>
+<li>Suele ser conveniente mantener el <i>user-agent</i> durante una misma sesión</li>
 </ul>
 </li>
 <li><strong>Intervalos aleatorios entre solicitudes</strong> para asemejarse a un usuario real
@@ -958,7 +958,7 @@ links = [
 </li>
 <li><strong>Agentes de usuario actualizados</strong>, porque los obsoletos son factores de bloqueo</li>
 <li><strong>Proxies</strong> para evitar el bloqueo de la IP</li>
-<li>Uso de <em><strong>headless browsers</strong></em>, como <a href="http://phantomjs.org/">PhantomJS</a>, junto con bibliotecas como <a href="http://www.seleniumhq.org/">Selenium</a></li>
+<li>Uso de <i><strong>headless browsers</strong></i>, como <a href="http://phantomjs.org/">PhantomJS</a>, junto con bibliotecas como <a href="http://www.seleniumhq.org/">Selenium</a></li>
 <li><strong>Programar contra</strong> trampas de <em><strong>HoneyPots</strong></em>
 <ul>
 <li>E.g. Enlaces ocultos o con el mismo color de fondo que la página</li>
