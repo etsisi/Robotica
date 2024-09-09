@@ -10,7 +10,7 @@ utilizarán durante el curso académico.
 
 <table>
   <tr><th>Asignatura</th><td>Robótica</td></tr>
-  <tr><th>Curso académico</th><td>2022-2023</td></tr>
+  <tr><th>Curso académico</th><td>2024-2025</td></tr>
   <tr><th>Centro</th><td>E.T.S.I. de Sistemas Informáticos</td></tr>
   <tr><th>Titulación</th><td>61CI - Grado en Ingenieria de Computadores</td></tr>
   <tr><th>Código</th><td>615000334</td></tr>
