@@ -48,7 +48,7 @@ Es un **framework** y un **middleware** para desarrollar aplicaciones distribuid
 - **Middleware**: Sirve de intermediario de comunicación entre componentes
 - Es <i>Open Software</i>, licenciado bajo la [BSD 3-Clause](https://choosealicense.com/licenses/bsd-3-clause/)
 
-Incluye sistema de gestión de paquetes para desarrollar y despliegar Software
+Incluye sistema de gestión de paquetes para desarrollar y desplegar Software
 
 - En C++ y Python
 
