@@ -958,10 +958,6 @@ int64 n
 ```
 ---
 
-![](https://docs.ros.org/en/foxy/_images/Action-SingleActionClient.gif)
-
----
-
 Para crear el servidor usaremos el método `create_service` de `Node`:
 
 ```python
