@@ -26,7 +26,7 @@ math: mathjax
 
 #### E.T.S.I. de Sistemas Informáticos - Universidad Politécnica de Madrid
 
-##### 22 de octubre de 2023
+##### 7 de octubre de 2024
 
 [![height:30](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-informational.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
@@ -92,14 +92,15 @@ Ofrece además una infraestructura de comunicación <i>language agnostic</i>
 
 En la actualidad coexisten dos versiones independientes en desarrollo
 
-1. **ROS1**: La versión original, bastante extendida aunque ya en desuso
+1. **ROS1**: La versión original, bastante extendida aunque ya en "desuso"
+   - Descargas en 2023 $\rightarrow$ ROS1 [Noetic Ninjemys](http://wiki.ros.org/noetic): 30,51%; ROS2 [Humble Hawksbill](https://docs.ros.org/en/foxy/Releases/Release-Humble-Hawksbill.html): 32,79%
+   - En total en 2023 ROS2 supuso un 58% de descargas frente al 42% de ROS1
 1. **ROS2**: Con nuevas funcionalidades, mejoras y soporte desde 0 para Python3
 
 ROS2 trata de **superar las limitaciones** impuestas por su predecesor, ROS1
 
-**Debemos procurar usar ROS2 en la medida de lo posible**
-
-- Y si no es posible, valorar **mucho** migrar de ROS a ROS2
+- Y por tanto, _**debemos procurar usar ROS2 en la medida de lo posible**_
+  - Y si no es posible, valorar **mucho** migrar de ROS a ROS2
 
 ---
 
@@ -126,7 +127,7 @@ Si consideráis que falta, sobra, o que se podría mejorar algo...
 
 # ¿Qué distribución elegir?
 
-La lista se encuentra en [https://index.ros.org/doc/ros2/Releases/](https://index.ros.org/doc/ros2/Releases/)
+La lista se encuentra en [https://docs.ros.org/en/rolling/Releases.html](https://docs.ros.org/en/rolling/Releases.html)
 
 - Órden alfabético $\equiv$ órden cronológico (<i>Dashing</i>, <i>Eloquent</i>, <i>Foxy</i>, etcétera)
 - Para elegir (si el proyecto no depende de una versión en concreto):
@@ -135,10 +136,11 @@ La lista se encuentra en [https://index.ros.org/doc/ros2/Releases/](https://inde
   - Comprobar el sistema operativo sobre el que funciona
   - **Recomendación**: Usar la última LTS sobre GNU/Linux
 
-Nosotros instalaremos **Humble Hawksbill** sobre **Ubuntu GNU/Linux 22.04**
+Nosotros instalaremos **Jazzy Jalisco** sobre **Ubuntu GNU/Linux 24.04**
 
 - Hemos elegido esta versión sobre <i>Iron Irwini</i> porque es LTS
-- Proceso de instalación: <https://docs.ros.org/en/humble/Installation.html>
+- Proceso de instalación: <https://docs.ros.org/en/jazzy/Installation.html>
+  - Instalar las <i>development tools</i> y la versión de escritorio (<i>desktop</i>)
 
 ---
 
@@ -304,10 +306,9 @@ Son el componente principal de nuestras aplicaciones
 - Un único nodo debería tener (idealmente) un único propósito
 - Se comunican entre sí a través de la infraestructura de mensajería de ROS
 
-<center>
+---
 
-![Nodes and packages](../img/t2/nodes-and-packages.png)
-<center>
+![bg](https://docs.ros.org/en/foxy/_images/Nodes-TopicandService.gif)
 
 ---
 
@@ -590,6 +591,10 @@ La **comunicación** es, en principio, **anónima**
   - **<i>Subscriber</i>**: Recibe un mensaje del bus
 
 <i>Publisher</i> y <i>subscriber</i> de un **mismo topic** deben compartir el **mismo tipo de mensaje**
+
+---
+
+![bg](https://docs.ros.org/en/foxy/_images/Topic-MultiplePublisherandMultipleSubscriber.gif)
 
 ---
 
@@ -930,6 +935,10 @@ Es un sistema de comunicación de arquitectura **cliente/servidor**
 
 ---
 
+![bg](https://docs.ros.org/en/foxy/_images/Service-MultipleServiceClient.gif)
+
+---
+
 # Creación de un servidor
 
 Un servicio se caracteriza por un **nombre único** y una **interfaz**
@@ -947,6 +956,9 @@ float32 radius
 ---
 int64 n
 ```
+---
+
+![](https://docs.ros.org/en/foxy/_images/Action-SingleActionClient.gif)
 
 ---
 
