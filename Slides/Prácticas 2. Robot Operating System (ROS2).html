@@ -126,7 +126,7 @@
 <ol>
 <li><strong>ROS1</strong>: La versión original, bastante extendida aunque ya en &quot;desuso&quot;
 <ul>
-<li>Descargas en 2023 <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.181ex" role="img" focusable="false" viewBox="0 -511 1000 522"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="2192" d="M56 237T56 250T70 270H835Q719 357 692 493Q692 494 692 496T691 499Q691 511 708 511H711Q720 511 723 510T729 506T732 497T735 481T743 456Q765 389 816 336T935 261Q944 258 944 250Q944 244 939 241T915 231T877 212Q836 186 806 152T761 85T740 35T732 4Q730 -6 727 -8T711 -11Q691 -11 691 0Q691 7 696 25Q728 151 835 230H70Q56 237 56 250Z"></path></g></g></g></svg></mjx-container> ROS1 <a href="http://wiki.ros.org/noetic">Noetic Ninjemys</a>: 30,51%; ROS2 <a href="https://docs.ros.org/en/foxy/Releases/Release-Humble-Hawksbill.html">Humble Hawksbill</a>: 32,79%</li>
+<li>Descargas en 2023 <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.181ex" role="img" focusable="false" viewBox="0 -511 1000 522"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="2192" d="M56 237T56 250T70 270H835Q719 357 692 493Q692 494 692 496T691 499Q691 511 708 511H711Q720 511 723 510T729 506T732 497T735 481T743 456Q765 389 816 336T935 261Q944 258 944 250Q944 244 939 241T915 231T877 212Q836 186 806 152T761 85T740 35T732 4Q730 -6 727 -8T711 -11Q691 -11 691 0Q691 7 696 25Q728 151 835 230H70Q56 237 56 250Z"></path></g></g></g></svg></mjx-container> ROS1 <a href="http://wiki.ros.org/noetic">Noetic Ninjemys</a>: 30,51%; ROS2 <a href="%5Bhttps://docs.ros.org/en/foxy/Releases/Release-Jazzy-Jalisco.html%5D(https://docs.ros.org/en/foxy/Releases/Release-Jazzy-Jalisco.html)">Jazzy Jalisco</a>: 32,79%</li>
 <li>En total en 2023 ROS2 supuso un 58% de descargas frente al 42% de ROS1</li>
 </ul>
 </li>
@@ -755,7 +755,7 @@ self.publisher.publish(msg)
 <h1>Sobre los mensajes en ROS</h1>
 <p>En la página sobre interfaces se describen todos los tipos de datos básicos</p>
 <ul>
-<li><a href="https://docs.ros.org/en/humble/Concepts/About-ROS-Interfaces.html">https://docs.ros.org/en/humble/Concepts/About-ROS-Interfaces.html</a></li>
+<li><a href="https://docs.ros.org/en/jazzy/Concepts/About-ROS-Interfaces.html">https://docs.ros.org/en/jazzy/Concepts/About-ROS-Interfaces.html</a></li>
 </ul>
 <p>Los tipos de datos complejos suelen tener sus propios repositorios</p>
 <ul>
@@ -1354,8 +1354,8 @@ valor = param.get_parameter_value().&lt;tipo&gt;_value
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="79" data-paginate="true" data-theme="etsisi" data-marpit-pagination="79" data-marpit-pagination-total="81" style="--paginate:true;--theme:etsisi;">
 <h1>Instalación</h1>
-<p>En nuestro caso, al usar <strong>Humble Hawksbill</strong> debemos el paquete correspondiente</p>
-<pre><code class="language-bash"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>sudo apt install ros-humble-webots-ros2
+<p>En nuestro caso, al usar <strong>Jazzy</strong> debemos el paquete correspondiente</p>
+<pre><code class="language-bash"><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>sudo apt install ros-jazzy-webots-ros2
 </span></span></foreignObject></svg></code></pre>
 <ul>
 <li>Si usamos por ejemplo <strong>Iron Irwini</strong>, el paquete es <code>ros-iron-webots-ros2</code></li>
@@ -1371,9 +1371,9 @@ valor = param.get_parameter_value().&lt;tipo&gt;_value
 <h1>Conectando los robots con el <i>framework</i></h1>
 <p>Existen dos tutoriales que explican cómo conectar los robots con ROS2</p>
 <ol>
-<li><a href="https://docs.ros.org/en/humble/Tutorials/Advanced/Simulators/Webots/Setting-Up-Simulation-Webots-Basic.html">Tutorial básico</a>: Configuración de una simulación con<br />
+<li><a href="https://docs.ros.org/en/jazzy/Tutorials/Advanced/Simulators/Webots/Setting-Up-Simulation-Webots-Basic.html">Tutorial básico</a>: Configuración de una simulación con<br />
 ROS2</li>
-<li><a href="https://docs.ros.org/en/humble/Tutorials/Advanced/Simulators/Webots/Setting-Up-Simulation-Webots-Advanced.html">Tutorial avanzado</a>: Ampliación del tutorial anterior<br />
+<li><a href="https://docs.ros.org/en/jazzy/Tutorials/Advanced/Simulators/Webots/Setting-Up-Simulation-Webots-Advanced.html">Tutorial avanzado</a>: Ampliación del tutorial anterior<br />
 con un nodo para evitar obstáculos</li>
 </ol>
 <p>Estos dan una idea de cómo se integran los robots con ROS2</p>
