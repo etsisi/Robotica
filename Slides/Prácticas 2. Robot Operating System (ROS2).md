@@ -93,7 +93,7 @@ Ofrece además una infraestructura de comunicación <i>language agnostic</i>
 En la actualidad coexisten dos versiones independientes en desarrollo
 
 1. **ROS1**: La versión original, bastante extendida aunque ya en "desuso"
-   - Descargas en 2023 $\rightarrow$ ROS1 [Noetic Ninjemys](http://wiki.ros.org/noetic): 30,51%; ROS2 [Humble Hawksbill](https://docs.ros.org/en/foxy/Releases/Release-Humble-Hawksbill.html): 32,79%
+   - Descargas en 2023 $\rightarrow$ ROS1 [Noetic Ninjemys](http://wiki.ros.org/noetic): 30,51%; ROS2 [Jazzy Jalisco]([https://docs.ros.org/en/foxy/Releases/Release-Jazzy-Jalisco.html](https://docs.ros.org/en/foxy/Releases/Release-Jazzy-Jalisco.html)): 32,79%
    - En total en 2023 ROS2 supuso un 58% de descargas frente al 42% de ROS1
 1. **ROS2**: Con nuevas funcionalidades, mejoras y soporte desde 0 para Python3
 
@@ -790,7 +790,7 @@ Algunos comandos muy útiles relacionados con topis de la CLI son:
 
 En la página sobre interfaces se describen todos los tipos de datos básicos
 
-- <https://docs.ros.org/en/humble/Concepts/About-ROS-Interfaces.html>
+- <https://docs.ros.org/en/jazzy/Concepts/About-ROS-Interfaces.html>
 
 Los tipos de datos complejos suelen tener sus propios repositorios
 
@@ -1462,10 +1462,10 @@ def generate_launch_description():
 
 # Instalación
 
-En nuestro caso, al usar **Humble Hawksbill** debemos el paquete correspondiente
+En nuestro caso, al usar **Jazzy** debemos el paquete correspondiente
 
 ```bash
-sudo apt install ros-humble-webots-ros2
+sudo apt install ros-jazzy-webots-ros2
 ```
 
 - Si usamos por ejemplo **Iron Irwini**, el paquete es `ros-iron-webots-ros2`
@@ -1488,9 +1488,9 @@ ros2 launch webots_ros2_universal_robot multirobot_launch.py
 
 Existen dos tutoriales que explican cómo conectar los robots con ROS2
 
-1. [Tutorial básico](https://docs.ros.org/en/humble/Tutorials/Advanced/Simulators/Webots/Setting-Up-Simulation-Webots-Basic.html): Configuración de una simulación con
+1. [Tutorial básico](https://docs.ros.org/en/jazzy/Tutorials/Advanced/Simulators/Webots/Setting-Up-Simulation-Webots-Basic.html): Configuración de una simulación con
   ROS2
-2. [Tutorial avanzado](https://docs.ros.org/en/humble/Tutorials/Advanced/Simulators/Webots/Setting-Up-Simulation-Webots-Advanced.html): Ampliación del tutorial anterior
+2. [Tutorial avanzado](https://docs.ros.org/en/jazzy/Tutorials/Advanced/Simulators/Webots/Setting-Up-Simulation-Webots-Advanced.html): Ampliación del tutorial anterior
   con un nodo para evitar obstáculos
 
 Estos dan una idea de cómo se integran los robots con ROS2
