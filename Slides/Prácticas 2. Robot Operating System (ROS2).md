@@ -1052,7 +1052,7 @@ class AddTwoIntsServerNode(Node):
 
     def callback_add_two_ints(self, request, response):
         response.sum = request.a + request.b
-        self.get_logger().info(f'{request.a} + {request.b} = {response.sum}'))
+        self.get_logger().info(f'{request.a} + {request.b} = {response.sum}')
 
         return response
 ```
